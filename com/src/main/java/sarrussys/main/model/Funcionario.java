@@ -73,4 +73,16 @@ public class Funcionario {
     public void setSalarioLiquido(Double salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "idFuncionario=" + idFuncionario +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", salarioBruto=" + salarioBruto +
+                ", salarioLiquido=" + salarioLiquido +
+                '}';
+    }
 }
