@@ -27,7 +27,7 @@ public class ConexaoDB {
             System.out.println("Driver version: "+ dbMetaData.getDriverVersion());
             System.out.println(connection.getCurrentSchema());
             System.out.println(connection.getDefaultRowPrefetch());
-            consultaTeste(connection);
+            //consultaTeste(connection);
         }
     }
 

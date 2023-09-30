@@ -20,9 +20,9 @@ public class Main {
     }
 
     public static void menuExemplo(){
-        char op = '9';
+        Integer op = null;
 
-        while (op != '5') {
+        do {
             System.out.println("+======================= MENU PRINCIPAL =======================+\n");
             System.out.println("ESCOLHA UMA OPÇÃO\n"
                     + "\n[1] Relatórios"
@@ -31,7 +31,7 @@ public class Main {
                     + "\n[4] Atualizar Registros"
                     + "\n[5] Sair");
             System.out.println("+======================= MENU PRINCIPAL =======================+\n");
-            op = sc.next().charAt(0);
+            op = sc.nextInt();
 
             switch (op){
                 case 1:
@@ -54,11 +54,9 @@ public class Main {
                     System.out.println("\n\n\n FIM DO PROGRAMA!");
                     break;
                 default:
-                    System.out.println("Opção indisponível!\nTente Novamento");
+                    System.out.println("Opção indisponível!\nTente Novamente");
                     break;
             }
-
-
-        }
+        } while (op != 5);
     }
 }
