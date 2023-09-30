@@ -33,10 +33,10 @@ public class ConexaoDB {
 
         try(OracleConnection connection = (OracleConnection) ods.getConnection()) {
             DatabaseMetaData dbMetaData = connection.getMetaData();
+            setDataSource(ods);
             System.out.println("[ConexaoDB] Driver name: "+ dbMetaData.getDriverName());
             System.out.println("[ConexaoDB] Driver version: "+ dbMetaData.getDriverVersion());
             System.out.println("[ConexaoDB] Database Connection : OK");
-            setDataSource(ods);
             Thread.sleep(1000); //Isso faz o programa para por X milisegundos, so para um efeito dramatico kkkk
         } catch (Exception e) {
             System.out.println("[ConexaoDB] Databse Connection: FAIL" +
