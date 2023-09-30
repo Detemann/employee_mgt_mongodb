@@ -16,7 +16,6 @@ public class Main {
         }
 
         menuExemplo();
-        //System.out.println("\n\n\n FIM DO PROGRAMA");
     }
 
     public static void menuExemplo(){

@@ -11,11 +11,21 @@ public class ConexaoDB {
     private final static String DB_user = "enterprise";
     private final static String DB_password = "senha123";
 
+    private OracleDataSource connection;
+
+    public OracleDataSource getDataSource() {
+        return this.connection;
+    }
+
+    public void setDataSource(OracleDataSource connection) {
+        this.connection = connection;
+    }
+
     public void initDB() throws SQLException {
         Properties properties = new Properties();
         properties.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, DB_user);
         properties.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, DB_password);
-        properties.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
+        properties.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "50");
 
         OracleDataSource ods = new OracleDataSource();
         ods.setURL(DB_url);
@@ -23,22 +33,14 @@ public class ConexaoDB {
 
         try(OracleConnection connection = (OracleConnection) ods.getConnection()) {
             DatabaseMetaData dbMetaData = connection.getMetaData();
-            System.out.println("Driver name: "+ dbMetaData.getDriverName());
-            System.out.println("Driver version: "+ dbMetaData.getDriverVersion());
-            System.out.println(connection.getCurrentSchema());
-            System.out.println(connection.getDefaultRowPrefetch());
-            //consultaTeste(connection);
-        }
-    }
-
-    private void consultaTeste(Connection connection) throws SQLException{
-        try(Statement statement = connection.createStatement()) {
-            try(ResultSet resultSet = statement.executeQuery("SELECT * FROM TB_FUNCIONARIO")) {
-                System.out.print("Teste sample: ");
-                resultSet.next();
-                System.out.print(resultSet.getInt("ID_FUNCIONARIO")+" ");
-                System.out.print(resultSet.getString("NOME"));
-            }
+            System.out.println("[ConexaoDB] Driver name: "+ dbMetaData.getDriverName());
+            System.out.println("[ConexaoDB] Driver version: "+ dbMetaData.getDriverVersion());
+            System.out.println("[ConexaoDB] Database Connection : OK");
+            setDataSource(ods);
+            Thread.sleep(1000); //Isso faz o programa para por X milisegundos, so para um efeito dramatico kkkk
+        } catch (Exception e) {
+            System.out.println("[ConexaoDB] Databse Connection: FAIL" +
+                    "\n"+e.getMessage());
         }
     }
 }
