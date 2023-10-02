@@ -13,11 +13,10 @@ public class Main {
         ConexaoDB conection = new ConexaoDB();
         try {
             conection.initDB();
-            conection.fecharConexao(); //teste
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Menu menu = new Menu();
+        Menu menu = new Menu(conection.getDataSource());
         menu.inicializacao();
     }
 

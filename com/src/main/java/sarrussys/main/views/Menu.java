@@ -1,5 +1,6 @@
 package sarrussys.main.views;
 
+import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.database.ConexaoDB;
 
 import java.io.IOException;
@@ -8,11 +9,11 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner sc;
-    private ConexaoDB conexao;
+    private OracleDataSource conexao;
 
-    public Menu(){
+    public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
-        this.conexao = new ConexaoDB();
+        this.conexao = conexao;
     }
 
     public void inicializacao() throws IOException, SQLException {
@@ -26,9 +27,6 @@ public class Menu {
             //this.conexao.initDB();
             quant_funcionario = contarFuncionarios();
             quant_departamento = contarDepartamentos();
-            System.out.println("Total de funcionários: " + quant_funcionario); //PARA TESTAR SE ESTA CORRETO O RETORNO
-            System.out.println("Total de departamentos: " + quant_departamento); //PARA TESTAR SE ESTA CORRETO O RETORNO
-            //this.conexao.fecharConexao(); //teste
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -111,27 +109,28 @@ public class Menu {
     public int contarFuncionarios() throws SQLException {
         int totalFuncionarios = 0;
         try {
-            this.conexao.initDB(); //teste
-            ResultSet consulta = conexao.executarConsulta("SELECT COUNT(1) total_funcionario FROM FUNCIONARIO");
-
+            Connection conexao = this.conexao.getConnection();
+            Statement statement = conexao.createStatement();
+            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_funcionario FROM FUNCIONARIO");
             if (consulta.next()) {
                 totalFuncionarios = consulta.getInt("total_funcionario");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.conexao.fecharConexao(); //teste
         return totalFuncionarios;
     }
 
     public int contarDepartamentos() throws SQLException {
         int totalDepartamentos = 0;
         try {//o ponto e virgula no final do script select count estava dando erro na consulta
-            ResultSet consulta = conexao.executarConsulta("SELECT COUNT(1) total_departamento FROM DEPARTAMENTO");
+
+            Connection conexao = this.conexao.getConnection();
+            Statement statement = conexao.createStatement();
+            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_departamento FROM DEPARTAMENTO");
             if (consulta.next()) {
                 totalDepartamentos = consulta.getInt("total_departamento");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
