@@ -43,4 +43,32 @@ public class ConexaoDB {
                     "\n"+e.getMessage());
         }
     }
+
+    //metodo criado a principio para realizar consulta sql (em testes)
+    public ResultSet executarConsulta(String sql) throws SQLException {
+        try (Connection connection = this.connection.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql)) {
+
+            return resultSet;
+        } catch (SQLException e) {
+            System.out.println("[ConexaoDB] Erro ao executar consulta SQL: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    // Método para fechar a conexão com o banco de dados
+    public void fecharConexao() {
+        try {
+            if (this.connection != null) {
+                this.connection.getConnection().close();
+                System.out.println("[ConexaoDB] Conexão fechada com sucesso.");
+            }
+        } catch (SQLException e) {
+            System.out.println("[ConexaoDB] Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+        }
+    }
+
+
+
 }
