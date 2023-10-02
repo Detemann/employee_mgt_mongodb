@@ -2,10 +2,8 @@ package sarrussys.main;
 
 import sarrussys.main.database.ConexaoDB;
 import sarrussys.main.views.Menu;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Main {
 

@@ -43,19 +43,4 @@ public class ConexaoDB {
                     "\n"+e.getMessage());
         }
     }
-
-    // Método para fechar a conexão com o banco de dados
-    public void fecharConexao() {
-        try {
-            if (this.connection != null) {
-                this.connection.getConnection().close();
-                System.out.println("[ConexaoDB] Conexão fechada com sucesso.");
-            }
-        } catch (SQLException e) {
-            System.out.println("[ConexaoDB] Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
-        }
-    }
-
-
-
 }

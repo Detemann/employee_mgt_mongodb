@@ -1,8 +1,6 @@
 package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
-import sarrussys.main.database.ConexaoDB;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
@@ -20,17 +18,15 @@ public class Menu {
 
         boolean sair = false;
 
-        int quant_funcionario = 10;
-        int quant_departamento = 10;
+        int quant_funcionario = 0;
+        int quant_departamento = 0;
 
         try {
-            //this.conexao.initDB();
             quant_funcionario = contarFuncionarios();
             quant_departamento = contarDepartamentos();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         do{
 
@@ -124,7 +120,6 @@ public class Menu {
     public int contarDepartamentos() throws SQLException {
         int totalDepartamentos = 0;
         try {//o ponto e virgula no final do script select count estava dando erro na consulta
-
             Connection conexao = this.conexao.getConnection();
             Statement statement = conexao.createStatement();
             ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_departamento FROM DEPARTAMENTO");
@@ -136,6 +131,4 @@ public class Menu {
         }
         return totalDepartamentos;
     }
-
-
 }
