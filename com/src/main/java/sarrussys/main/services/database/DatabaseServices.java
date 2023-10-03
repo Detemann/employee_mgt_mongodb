@@ -12,6 +12,7 @@ public class DatabaseServices {
         this.dataSource = dataSource;
     }
 
+
     public ResultSet fazerConsulta(String sql) {
         try {
             if (sql.isEmpty()) throw new RuntimeException("Sem comando SQL");
