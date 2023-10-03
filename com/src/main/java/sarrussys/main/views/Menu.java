@@ -2,64 +2,59 @@ package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.services.database.DatabaseServices;
+import sarrussys.main.services.database.MenuServices;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private Scanner sc;
     private OracleDataSource conexao;
+    private MenuServices menuServices;
 
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
         this.conexao = conexao;
+        this.menuServices = new MenuServices(conexao);
     }
 
     public void inicializacao() throws IOException, SQLException {
-
-        boolean sair = false;
 
         int quant_funcionario = 0;
         int quant_departamento = 0;
 
         try {
-            quant_funcionario = contarFuncionarios();
-            quant_departamento = contarDepartamentos();
+            quant_funcionario = this.menuServices.contarFuncionariosServices();
+            quant_departamento = this.menuServices.contarDepartamentosService();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        do{
+        System.out.println("######################################################");
+        System.out.println("#         SISTEMA DE CONTROLE DE FUNCIONARIO         #");
+        System.out.println("#                                                    #");
+        System.out.println("#   TOTAL DE REGISTROS EXISTENTES                    #");
+        System.out.println("#        1- FUNCIONARIOS: " + String.format("%-27d", quant_funcionario) + "#");
+        System.out.println("#        2- DEPARTAMENTOS: " + String.format("%-26d", quant_departamento) + "#");
+        System.out.println("#                                                    #");
+        System.out.println("#                                                    #");
+        System.out.println("#   CRIADO POR: LUCAS DETEMANN                       #");
+        System.out.println("#               NATALIA TAYAR                        #");
+        System.out.println("#               WANDERSON GONÇALVES                  #");
+        System.out.println("#                                                    #");
+        System.out.println("#                                                    #");
+        System.out.println("#   DISCIPLINA: BANCO DE DADOS 2023/2                #");
+        System.out.println("#   PROFESSOR: HOWARD ROATTI                         #");
+        System.out.println("######################################################");
 
-            System.out.println("######################################################");
-            System.out.println("#         SISTEMA DE CONTROLE DE FUNCIONARIO         #");
-            System.out.println("#                                                    #");
-            System.out.println("#   TOTAL DE REGISTROS EXISTENTES                    #");
-            System.out.println("#        1- FUNCIONARIOS: " + String.format("%-27d", quant_funcionario) + "#");
-            System.out.println("#        2- DEPARTAMENTOS: " + String.format("%-26d", quant_departamento) + "#");
-            System.out.println("#                                                    #");
-            System.out.println("#                                                    #");
-            System.out.println("#   CRIADO POR: LUCAS DETEMANN                       #");
-            System.out.println("#               NATALIA TAYAR                        #");
-            System.out.println("#               WANDERSON GONÇALVES                  #");
-            System.out.println("#                                                    #");
-            System.out.println("#                                                    #");
-            System.out.println("#   DISCIPLINA: BANCO DE DADOS 2023/2                #");
-            System.out.println("#   PROFESSOR: HOWARD ROATTI                         #");
-            System.out.println("######################################################");
-
-            System.out.println("Pressione ENTER para prosseguir");
-            int input = System.in.read();
-
-            if (input == 10) {
-                sair = true;
-            }
-        }while (!sair);
+        sair();
         menuPrincipal();
     }
 
-    public void menuPrincipal(){
+    public void menuPrincipal() throws SQLException, IOException {
         Integer op = null;
 
         do {
@@ -79,8 +74,7 @@ public class Menu {
 
             switch (op){
                 case 1:
-                    //relatórios
-                    System.out.println("Relatorios");
+                    relatorios(menuServices);
                     break;
                 case 2:
                     //inserir registros
@@ -104,33 +98,62 @@ public class Menu {
         } while (op != 5);
     }
 
-    public int contarFuncionarios() throws SQLException {
-        int totalFuncionarios = 0;
-        try {
-            Connection conexao = this.conexao.getConnection();
-            Statement statement = conexao.createStatement();
-            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_funcionario FROM FUNCIONARIO");
-            if (consulta.next()) {
-                totalFuncionarios = consulta.getInt("total_funcionario");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public void relatorios(MenuServices menuServices) throws SQLException, IOException {
+        System.out.println("[1] Relatório 1 - Consulta o numero de funcionarios em cada Departamento\n" +
+                "[2] Relatorio 2 - Consulta cada Funcionario e seu respectivo Departamento\n" +
+                "[0] Sair");
+
+        System.out.println("Informe sua opção:");
+        int op = sc.nextInt();
+        List<String> resultado;
+
+        switch (op){
+            case 1:
+                resultado = this.menuServices.relatorio1();
+                System.out.println("=========== RELATORIO 1 =========");
+                for (int i = 0; i < resultado.size(); i += 2) {
+                    String departamento = resultado.get(i);
+                    String quantidade = resultado.get(i + 1);
+                    System.out.println("Departamento: "+ departamento+" - "+quantidade+" Funcionarios");
+                }
+                sair();
+                break;
+            case 2:
+                resultado = this.menuServices.relatorio2();
+                System.out.println("========== RELATORIO 2 ==========");
+                for (int i = 0; i < resultado.size(); i += 2) {
+                    String nome = resultado.get(i);
+                    String departamento = resultado.get(i + 1);
+
+                    System.out.println("Nome: " + nome);
+                    if (departamento == null) {
+                        System.out.println("Departamento: sem departamento");
+                    } else {
+                        System.out.println("Departamento: " + departamento);
+                    }
+                    System.out.println();
+                }
+                sair();
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Opção Inválida");
+                break;
         }
-        return totalFuncionarios;
     }
 
-    public int contarDepartamentos() throws SQLException {
-        int totalDepartamentos = 0;
-        try {//o ponto e virgula no final do script select count estava dando erro na consulta
-            Connection conexao = this.conexao.getConnection();
-            Statement statement = conexao.createStatement();
-            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_departamento FROM DEPARTAMENTO");
-            if (consulta.next()) {
-                totalDepartamentos = consulta.getInt("total_departamento");
+    public void sair() throws IOException {
+        boolean sair = false;
+
+        while(!sair) {
+            System.out.println("Pressione ENTER para prosseguir");
+            int input = System.in.read();
+
+            if (input == 10) {
+                sair = true;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return totalDepartamentos;
     }
+
 }
