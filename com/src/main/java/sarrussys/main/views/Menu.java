@@ -17,17 +17,13 @@ public class Menu {
         this.menuServices = new MenuServices(conexao);
     }
 
-    public void inicializacao() throws IOException, SQLException {
+    public void inicializacao() throws IOException {
 
         int quant_funcionario = 0;
         int quant_departamento = 0;
+        quant_funcionario = this.menuServices.contarFuncionariosServices();
+        quant_departamento = this.menuServices.contarDepartamentosService();
 
-        try {
-            quant_funcionario = this.menuServices.contarFuncionariosServices();
-            quant_departamento = this.menuServices.contarDepartamentosService();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         System.out.println("######################################################");
         System.out.println("#         SISTEMA DE CONTROLE DE FUNCIONARIO         #");
@@ -45,12 +41,11 @@ public class Menu {
         System.out.println("#   DISCIPLINA: BANCO DE DADOS 2023/2                #");
         System.out.println("#   PROFESSOR: HOWARD ROATTI                         #");
         System.out.println("######################################################");
-
         sair();
         menuPrincipal();
     }
 
-    public void menuPrincipal() throws SQLException, IOException {
+    public void menuPrincipal() throws IOException {
         Integer op = null;
 
         do {
@@ -70,7 +65,7 @@ public class Menu {
 
             switch (op){
                 case 1:
-                    relatorios(menuServices);
+                    relatorios();
                     break;
                 case 2:
                     //inserir registros
@@ -94,9 +89,10 @@ public class Menu {
         } while (op != 5);
     }
 
-    public void relatorios(MenuServices menuServices) throws SQLException, IOException {
+    public void relatorios() throws IOException {
         System.out.println("[1] Relatório 1 - Consulta o numero de funcionarios em cada Departamento\n" +
                 "[2] Relatorio 2 - Consulta cada Funcionario e seu respectivo Departamento\n" +
+                "[3] Relatorio 3 - Consulta cada Departamento e o nome do seu respectivo Chefe\n" +
                 "[0] Sair");
 
         System.out.println("Informe sua opção:");
@@ -106,30 +102,62 @@ public class Menu {
         switch (op){
             case 1:
                 resultado = this.menuServices.relatorio1();
-                System.out.println("=========== RELATORIO 1 =========");
-                for (int i = 0; i < resultado.size(); i += 2) {
-                    String departamento = resultado.get(i);
-                    String quantidade = resultado.get(i + 1);
-                    System.out.println("Departamento: "+ departamento+" - "+quantidade+" Funcionarios");
+                if(resultado == null){
+                    System.out.println(">>> Nenhum registro encontrado!!");
+                    sair();
+                }else{
+                    System.out.println("=========== RELATORIO 1 =========");
+                    for (int i = 0; i < resultado.size(); i += 2) {
+                        String departamento = resultado.get(i);
+                        String quantidade = resultado.get(i + 1);
+                        System.out.println("Departamento: "+ departamento+" - "+quantidade+" Funcionarios");
+                    }
+                    sair();
                 }
-                sair();
                 break;
             case 2:
                 resultado = this.menuServices.relatorio2();
-                System.out.println("========== RELATORIO 2 ==========");
-                for (int i = 0; i < resultado.size(); i += 2) {
-                    String nome = resultado.get(i);
-                    String departamento = resultado.get(i + 1);
+                if(resultado == null){
+                    System.out.println(">>> Nenhum registro encontrado!!");
+                    sair();
+                }else {
+                    System.out.println("========== RELATORIO 2 ==========");
+                    for (int i = 0; i < resultado.size(); i += 2) {
+                        String nome = resultado.get(i);
+                        String departamento = resultado.get(i + 1);
 
-                    System.out.println("Nome: " + nome);
-                    if (departamento == null) {
-                        System.out.println("Departamento: sem departamento");
-                    } else {
-                        System.out.println("Departamento: " + departamento);
+                        System.out.println("Nome: " + nome);
+                        if (departamento == null) {
+                            System.out.println("Departamento: sem departamento");
+                        } else {
+                            System.out.println("Departamento: " + departamento);
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
+                    sair();
                 }
-                sair();
+                break;
+            case 3:
+                resultado = this.menuServices.relatorio3();
+                if(resultado == null){
+                    System.out.println(">>> Nenhum registro encontrado!!");
+                    sair();
+                }else {
+                    System.out.println("========== RELATORIO 3 ==========");
+                    for (int i = 0; i < resultado.size(); i += 2) {
+                        String departamento = resultado.get(i);
+                        String chefe = resultado.get(i + 1);
+
+                        System.out.println("Departamento: " + departamento);
+                        if (chefe == null) {
+                            System.out.println("Chefe: sem chefe");
+                        } else {
+                            System.out.println("Chefe: " + chefe);
+                        }
+                        System.out.println();
+                    }
+                    sair();
+                }
                 break;
             case 0:
                 break;
