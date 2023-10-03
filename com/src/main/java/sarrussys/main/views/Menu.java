@@ -104,13 +104,19 @@ public class Menu {
         } while (op != 5);
     }
 
-    public Integer contarFuncionarios() throws SQLException {
-        DatabaseServices databaseServices = new DatabaseServices(conexao);
-        ResultSet consulta = databaseServices.fazerConsulta("SELECT COUNT(1) as total_funcionario FROM FUNCIONARIO");
-        if (consulta.next()) {
-            return consulta.getInt("total_funcionario");
+    public int contarFuncionarios() throws SQLException {
+        int totalFuncionarios = 0;
+        try {
+            Connection conexao = this.conexao.getConnection();
+            Statement statement = conexao.createStatement();
+            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_funcionario FROM FUNCIONARIO");
+            if (consulta.next()) {
+                totalFuncionarios = consulta.getInt("total_funcionario");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        return totalFuncionarios;
     }
 
     public int contarDepartamentos() throws SQLException {
