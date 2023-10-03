@@ -1,6 +1,8 @@
 package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.services.database.DatabaseServices;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
@@ -102,19 +104,13 @@ public class Menu {
         } while (op != 5);
     }
 
-    public int contarFuncionarios() throws SQLException {
-        int totalFuncionarios = 0;
-        try {
-            Connection conexao = this.conexao.getConnection();
-            Statement statement = conexao.createStatement();
-            ResultSet consulta = statement.executeQuery("SELECT COUNT(1) total_funcionario FROM FUNCIONARIO");
-            if (consulta.next()) {
-                totalFuncionarios = consulta.getInt("total_funcionario");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Integer contarFuncionarios() throws SQLException {
+        DatabaseServices databaseServices = new DatabaseServices(conexao);
+        ResultSet consulta = databaseServices.fazerConsulta("SELECT COUNT(1) as total_funcionario FROM FUNCIONARIO");
+        if (consulta.next()) {
+            return consulta.getInt("total_funcionario");
         }
-        return totalFuncionarios;
+        return null;
     }
 
     public int contarDepartamentos() throws SQLException {
