@@ -1,23 +1,19 @@
 package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
-import sarrussys.main.services.database.DatabaseServices;
-import sarrussys.main.services.database.MenuServices;
+import sarrussys.main.services.MenuServices;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private Scanner sc;
-    private OracleDataSource conexao;
     private MenuServices menuServices;
 
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
-        this.conexao = conexao;
         this.menuServices = new MenuServices(conexao);
     }
 
