@@ -14,19 +14,19 @@ public class MenuController {
     }
 
 
-
-    public List<String> relatorio1(){
-        List<String> resultado = relatorioServices.relatorio1Service();
+    //relatorios INICIO
+    public List<String> relatorioDepartamentoNumFuncionariosController(){
+        List<String> resultado = relatorioServices.relatorioDepartamentoNumFuncionarios();
         return resultado;
     }
 
-    public List<String> relatorio2(){
-        List<String> resultado = relatorioServices.relatorio2Service();
+    public List<String> relatorioFuncionarioDepartamentoController(){
+        List<String> resultado = relatorioServices.relatorioFuncionarioDepartamento();
         return resultado;
     }
 
-    public List<String> relatorio3(){
-        List<String> resultado = relatorioServices.relatorio3Service();
+    public List<String> relatorioDepartamentoChefeController(){
+        List<String> resultado = relatorioServices.relatorioDepartamentoChefe();
         return resultado;
     }
 
@@ -38,6 +38,8 @@ public class MenuController {
         int resultado = this.relatorioServices.contarDepartamentosService();
         return resultado;
     }
+    //relatorios FIM
+
 
 
 }

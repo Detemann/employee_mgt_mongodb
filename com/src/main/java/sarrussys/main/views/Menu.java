@@ -99,13 +99,12 @@ public class Menu {
 
         switch (op){
             case 1:
-                //resultado = this.relatorioServices.relatorio1();
-                resultado = this.menuController.relatorio1();
+                resultado = this.menuController.relatorioDepartamentoNumFuncionariosController();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
                 }else{
-                    System.out.println("=========== RELATORIO 1 =========");
+                    System.out.println("\n=========== NUMERO DE FUNCIONARIOS POR DEPARTAMENTO ===========");
                     for (int i = 0; i < resultado.size(); i += 2) {
                         String departamento = resultado.get(i);
                         String quantidade = resultado.get(i + 1);
@@ -115,13 +114,12 @@ public class Menu {
                 }
                 break;
             case 2:
-                //resultado = this.relatorioServices.relatorio2();
-                resultado = this.menuController.relatorio2();
+                resultado = this.menuController.relatorioFuncionarioDepartamentoController();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
                 }else {
-                    System.out.println("========== RELATORIO 2 ==========");
+                    System.out.println("\n========== DEPARTAMENTO DE CADA FUNCIONARIO ==========");
                     for (int i = 0; i < resultado.size(); i += 2) {
                         String nome = resultado.get(i);
                         String departamento = resultado.get(i + 1);
@@ -132,19 +130,17 @@ public class Menu {
                         } else {
                             System.out.println("Departamento: " + departamento);
                         }
-                        System.out.println();
                     }
                     sair();
                 }
                 break;
             case 3:
-                //resultado = this.relatorioServices.relatorio3();
-                resultado = this.menuController.relatorio3();
+                resultado = this.menuController.relatorioDepartamentoChefeController();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
                 }else {
-                    System.out.println("========== RELATORIO 3 ==========");
+                    System.out.println("\n========== CHEFES DE DEPARTAMENTO ==========");
                     for (int i = 0; i < resultado.size(); i += 2) {
                         String departamento = resultado.get(i);
                         String chefe = resultado.get(i + 1);
@@ -155,7 +151,6 @@ public class Menu {
                         } else {
                             System.out.println("Chefe: " + chefe);
                         }
-                        System.out.println();
                     }
                     sair();
                 }
@@ -172,7 +167,7 @@ public class Menu {
         boolean sair = false;
 
         while(!sair) {
-            System.out.println(">> Pressione ENTER para prosseguir");
+            System.out.println("\n>> Pressione ENTER para prosseguir");
             int input = System.in.read();
 
             if (input == 10) {

@@ -18,7 +18,7 @@ public class RelatorioServices {
     }
 
     //relatorio que retorna cada departamento e o numero de funcionarios respectavamente
-    public List<String> relatorio1Service(){
+    public List<String> relatorioDepartamentoNumFuncionarios(){
         List<String> resultado = new ArrayList<>();
         try {
             ResultSet consulta = this.servicosBanco.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, COUNT(FUNCIONARIO.ID_FUNCIONARIO) AS Numero_Funcionarios\n" +
@@ -42,7 +42,7 @@ public class RelatorioServices {
     }
 
     //relatorio que retorna os funcionarios e seu respectivo departamento
-    public List<String> relatorio2Service(){
+    public List<String> relatorioFuncionarioDepartamento(){
         List<String> resultado = new ArrayList<>();
 
         try {
@@ -65,7 +65,8 @@ public class RelatorioServices {
         }
     }
 
-    public List<String> relatorio3Service(){
+    //relatorio que retorna os departamentos e o seu respectivo chefe
+    public List<String> relatorioDepartamentoChefe(){
         List<String> resultado = new ArrayList<>();
 
         try {
