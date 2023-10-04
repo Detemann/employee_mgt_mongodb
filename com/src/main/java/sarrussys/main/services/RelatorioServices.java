@@ -9,18 +9,17 @@ import java.sql.SQLException;;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuServices {
+public class RelatorioServices {
     private DatabaseServices servicosBanco;
 
     //construtor
-    public MenuServices(OracleDataSource conexao){
+    public RelatorioServices(OracleDataSource conexao){
         this.servicosBanco = new DatabaseServices(conexao);
     }
 
     //relatorio que retorna cada departamento e o numero de funcionarios respectavamente
-    public List<String> relatorio1(){
+    public List<String> relatorioDepartamentoNumFuncionarios(){
         List<String> resultado = new ArrayList<>();
-
         try {
             ResultSet consulta = this.servicosBanco.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, COUNT(FUNCIONARIO.ID_FUNCIONARIO) AS Numero_Funcionarios\n" +
                     "FROM DEPARTAMENTO\n" +
@@ -43,7 +42,7 @@ public class MenuServices {
     }
 
     //relatorio que retorna os funcionarios e seu respectivo departamento
-    public List<String> relatorio2(){
+    public List<String> relatorioFuncionarioDepartamento(){
         List<String> resultado = new ArrayList<>();
 
         try {
@@ -66,7 +65,8 @@ public class MenuServices {
         }
     }
 
-    public List<String> relatorio3(){
+    //relatorio que retorna os departamentos e o seu respectivo chefe
+    public List<String> relatorioDepartamentoChefe(){
         List<String> resultado = new ArrayList<>();
 
         try {
