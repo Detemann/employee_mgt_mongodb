@@ -1,28 +1,27 @@
 package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
-import sarrussys.main.services.MenuServices;
+import sarrussys.main.controllers.MenuController;
+import sarrussys.main.services.RelatorioServices;
 
 import java.io.IOException;
-import java.sql.*;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private Scanner sc;
-    private MenuServices menuServices;
+    private MenuController menuController;
 
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
-        this.menuServices = new MenuServices(conexao);
+        this.menuController = new MenuController(conexao);
     }
 
     public void inicializacao() throws IOException {
-
         int quant_funcionario = 0;
         int quant_departamento = 0;
-        quant_funcionario = this.menuServices.contarFuncionariosServices();
-        quant_departamento = this.menuServices.contarDepartamentosService();
+        quant_funcionario = this.menuController.contarFuncionarios();
+        quant_departamento = this.menuController.contarDepartamentos();
 
 
         System.out.println("######################################################");
@@ -49,18 +48,17 @@ public class Menu {
         Integer op = null;
 
         do {
-            System.out.println("#======================= MENU PRINCIPAL =======================#");
-            System.out.println("#                                                              #"
-                    +"\n#                       ESCOLHA UMA OPÇÃO                      #"
-                    +"\n#                                                              #"
-                    +"\n#   [1] Relatórios                                             #"
-                    +"\n#   [2] Inserir Registros                                      #"
-                    +"\n#   [3] Remover Registros                                      #"
-                    +"\n#   [4] Atualizar Registros                                    #"
-                    +"\n#   [5] Sair                                                   #"
-                    +"\n#                                                              #"
+            System.out.println("######################################################");
+            System.out.println("#                >>MENU PRINCIPAL<<                  #"
+                    +"\n#                ESCOLHA UMA OPÇÃO                   #"
+                    +"\n#                                                    #"
+                    +"\n#   [1] Relatórios                                   #"
+                    +"\n#   [2] Inserir Registros                            #"
+                    +"\n#   [3] Remover Registros                            #"
+                    +"\n#   [4] Atualizar Registros                          #"
+                    +"\n#   [5] Sair                                         #"
             );
-            System.out.println("#==============================================================#\n");
+            System.out.println("######################################################\n");
             op = sc.nextInt();
 
             switch (op){
@@ -101,7 +99,8 @@ public class Menu {
 
         switch (op){
             case 1:
-                resultado = this.menuServices.relatorio1();
+                //resultado = this.relatorioServices.relatorio1();
+                resultado = this.menuController.relatorio1();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
@@ -116,7 +115,8 @@ public class Menu {
                 }
                 break;
             case 2:
-                resultado = this.menuServices.relatorio2();
+                //resultado = this.relatorioServices.relatorio2();
+                resultado = this.menuController.relatorio2();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
@@ -138,7 +138,8 @@ public class Menu {
                 }
                 break;
             case 3:
-                resultado = this.menuServices.relatorio3();
+                //resultado = this.relatorioServices.relatorio3();
+                resultado = this.menuController.relatorio3();
                 if(resultado == null){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
@@ -171,7 +172,7 @@ public class Menu {
         boolean sair = false;
 
         while(!sair) {
-            System.out.println("Pressione ENTER para prosseguir");
+            System.out.println(">> Pressione ENTER para prosseguir");
             int input = System.in.read();
 
             if (input == 10) {
