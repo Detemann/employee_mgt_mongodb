@@ -320,7 +320,7 @@ public class Menu {
             System.out.println("");
         }
 
-        Funcionario funcionarioNovo = new Funcionario(nome, cpf, email, salarioBruto, salarioLiquido, departamento);;
+        Funcionario funcionarioNovo = new Funcionario(nome, cpf, email, salarioBruto, salarioLiquido, departamento);
 
         //se o funcionario existir
         if(this.funcionarioController.funcionarioExisteController(funcionarioNovo.getCpf())){

@@ -231,9 +231,11 @@ public class RelatorioServices {
             ResultSet consulta = this.servicosBanco.fazerConsulta(sql);
 
             if (consulta.next()){
+                Integer idDepartamento = consulta.getInt("ID_DEPARTAMENTO");
                 String nome = consulta.getString("NOME");
                 String sigla = consulta.getString("SIGLA");
-                int idChfe = consulta.getInt("ID_CHEFE");
+                Integer idChfe = consulta.getInt("ID_CHEFE");
+                departamento.setIdDepartamento(idDepartamento);
                 departamento.setNomeDepartamento(nome);
                 departamento.setSigla(sigla);
                 Funcionario chefeDepartamento = pesquisaFuncionarioID(idChfe);
