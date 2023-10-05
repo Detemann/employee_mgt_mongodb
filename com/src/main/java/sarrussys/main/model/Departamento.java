@@ -45,6 +45,7 @@ public class Departamento {
     }
 
     public Funcionario getChefeDepartamento() {
+
         return chefeDepartamento;
     }
 

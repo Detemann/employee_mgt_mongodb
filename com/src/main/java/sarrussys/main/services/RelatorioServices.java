@@ -1,6 +1,8 @@
 package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.model.Departamento;
+import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.database.DatabaseServices;
 
 
@@ -116,5 +118,132 @@ public class RelatorioServices {
             System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
         }
         return totalFuncionarios;
+    }
+
+    public List<Departamento> mostraDepartamentos(){
+        List<Departamento> resultado = new ArrayList<>();
+        Departamento departamento;
+
+        try {
+            String sql = "SELECT * FROM DEPARTAMENTO";
+            ResultSet consulta = this.servicosBanco.fazerConsulta(sql);
+            while (consulta.next()){
+                int id = consulta.getInt("ID_DEPARTAMENTO");
+                String nome = consulta.getString("NOME");
+                String sigla = consulta.getString("SIGLA");
+                Integer idChfe = consulta.getInt("ID_CHEFE");
+
+                if(idChfe != null){
+                    Funcionario chefe = pesquisaFuncionarioID(idChfe);
+                    departamento = new Departamento(id, nome, sigla, chefe);
+                    resultado.add(departamento);
+                }else{
+                    Funcionario chefe = new Funcionario(null,null,null,null,null,null);
+                    departamento = new Departamento(id, nome, sigla, chefe);
+                    resultado.add(departamento);
+                }
+            }
+            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
+                return resultado;
+            }else{
+                //Nenhum registro encontrado!
+                return null;
+            }
+        }catch (SQLException e){
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Funcionario> mostrarFuncionarios(){
+        List<Funcionario> resultado = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM FUNCIONARIO";
+            ResultSet consulta = this.servicosBanco.fazerConsulta(sql);
+            Funcionario funcionario;
+
+            while (consulta.next()){
+                Integer id = consulta.getInt("ID_FUNCIONARIO");
+                String nome = consulta.getString("NOME");
+                String cpf = consulta.getString("CPF");
+                String email = consulta.getString("EMAIL");
+                double salarioBruto = consulta.getDouble("SALARIO_BRUTO");
+                double salarioLiquido = consulta.getDouble("SALARIO_LIQUIDO");
+                Integer idDepartamento = consulta.getInt("ID_DEPARTAMENTO");
+
+                Departamento departamento = pesquisaDepartamentoID(idDepartamento);
+                funcionario = new Funcionario(id, nome, cpf, email, salarioBruto, salarioLiquido, departamento);
+                resultado.add(funcionario);
+            }
+
+            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
+                return resultado;
+            }else{
+                //Nenhum registro encontrado!
+                return null;
+            }
+        }catch (SQLException e){
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
+        }
+    }
+
+
+    public Funcionario pesquisaFuncionarioID(Integer id){
+        Funcionario funcionario = new Funcionario();
+
+        try{
+            String sql = "SELECT *\n" +
+                    "FROM FUNCIONARIO\n" +
+                    "WHERE ID_FUNCIONARIO = "+id;
+            ResultSet consulta = this.servicosBanco.fazerConsulta(sql);
+
+            if (consulta.next()){
+                String nome = consulta.getString("NOME");
+                String cpf = consulta.getString("CPF");
+                String email = consulta.getString("EMAIL");
+                double salarioBruto = consulta.getDouble("SALARIO_BRUTO");
+                double salarioLiquido = consulta.getDouble("SALARIO_LIQUIDO");
+                Integer idDepartamento = consulta.getInt("ID_DEPARTAMENTO");
+                funcionario.setIdFuncionario(id);
+                funcionario.setNome(nome);
+                funcionario.setCpf(cpf);
+                funcionario.setEmail(email);
+                funcionario.setSalarioBruto(salarioBruto);
+                funcionario.setSalarioLiquido(salarioLiquido);
+                return funcionario;
+            }
+
+        }catch (SQLException e){
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+        }
+        return null;
+    }
+
+    public Departamento pesquisaDepartamentoID(Integer id){
+        Departamento departamento = new Departamento();
+
+        try{
+        String sql = "SELECT *\n" +
+                "FROM DEPARTAMENTO\n" +
+                "WHERE ID_DEPARTAMENTO = "+id;
+            ResultSet consulta = this.servicosBanco.fazerConsulta(sql);
+
+            if (consulta.next()){
+                String nome = consulta.getString("NOME");
+                String sigla = consulta.getString("SIGLA");
+                int idChfe = consulta.getInt("ID_CHEFE");
+                departamento.setNomeDepartamento(nome);
+                departamento.setSigla(sigla);
+                Funcionario chefeDepartamento = pesquisaFuncionarioID(idChfe);
+                departamento.setChefeDepartamento(chefeDepartamento);
+                return departamento;
+            }
+
+        }catch (SQLException e){
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+        }
+        return null;
     }
 }

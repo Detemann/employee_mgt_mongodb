@@ -1,6 +1,8 @@
 package sarrussys.main.controllers;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.model.Departamento;
+import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.RelatorioServices;
 
 import java.util.ArrayList;
@@ -37,6 +39,22 @@ public class MenuController {
     public int contarDepartamentos(){
         int resultado = this.relatorioServices.contarDepartamentosService();
         return resultado;
+    }
+
+    public List<Funcionario> mostrarFuncionarios(){
+        return this.relatorioServices.mostrarFuncionarios();
+    }
+
+    public List<Departamento> mostrarDepartamentos(){
+        return this.relatorioServices.mostraDepartamentos();
+    }
+
+    public Funcionario pesquisaFuncionarioID(Integer id){
+        return this.relatorioServices.pesquisaFuncionarioID(id);
+    }
+
+    public Departamento pesquisaDepartamentoID(Integer id){
+        return this.relatorioServices.pesquisaDepartamentoID(id);
     }
     //relatorios FIM
 
