@@ -1,6 +1,7 @@
 package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
 import sarrussys.main.controllers.MenuController;
 import sarrussys.main.model.Departamento;
@@ -17,11 +18,13 @@ public class Menu {
     private Scanner sc;
     private MenuController menuController;
     private FuncionarioController funcionarioController;
+    private DepartamentoController departamentoController;
 
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
+        this.departamentoController = new DepartamentoController(conexao);
     }
 
     public void inicializacao() throws IOException {
@@ -187,16 +190,20 @@ public class Menu {
                 switch (op){
                     case 1: //inserir novo funcionario
                         Funcionario novoFuncionario = novoFuncionario();
-                        System.out.println(novoFuncionario);
 
                         if(novoFuncionario == null){
                             System.out.println("\n\n>>> Funcionário já cadastrado!");
                         }else{
-
                             if(funcionarioController.cadastrarFuncionarioController(novoFuncionario)){
                                 System.out.println("\n\n>>> Funcionário Inserido com Sucesso!");
                                 System.out.println("Nome: "+novoFuncionario.getNome());
                                 System.out.println("CPF: "+novoFuncionario.getCpf());
+                                //SE EXISTIR UM DEPARTAMENTO NO FUNCIONARIO ELE MOSTRA
+                                if(novoFuncionario.getDepartamento() != null){
+                                    System.out.println("Departamento: "+novoFuncionario.getDepartamento().getNomeDepartamento());
+                                }else{
+                                    System.out.println("Departamento: sem departamento");
+                                }
                             }
 
                         }
@@ -211,7 +218,7 @@ public class Menu {
                         System.out.println("Opção inválida.");
                         break;
                 }
-                System.out.println("Deseja inserir mais um? \n[1] Funcionario  \n[2] Departamento \n[3] Terminar");
+                System.out.println("\nDeseja inserir mais um? \n[1] Funcionario  \n[2] Departamento \n[3] Terminar");
                 op = sc.nextInt();
                 if(op == 1){
                     op = 1;
@@ -233,8 +240,6 @@ public class Menu {
         }
 
     }
-
-
 
 
     public Funcionario novoFuncionario() throws IOException {
@@ -274,56 +279,68 @@ public class Menu {
         Double salarioLiquido = this.sc.nextDouble();
 
         Departamento departamento = null;
-        //ESCOLHER DEPARTAMENTO -- ESTA DANDO ERRO
-        System.out.println("Deseja Inserir o Funcionario em um Departamento?\n[ S ] Sim\n[ N ] Nao");
         Integer departamentoID;
 
+        char op;
 
-        char op = this.sc.next().charAt(0);
-        if(op == 's'){
-            List<Departamento> resultado = this.menuController.mostrarDepartamentos();
-            if(resultado == null){
-                System.out.println(">>> Nenhum registro encontrado!!");
-                sair();
-            }else {
-                System.out.println("=================== DEPARTAMENTOS ===================");
-                System.out.println(resultado.size());
+        do{
+            System.out.println("Deseja Inserir o Funcionario em um Departamento?\n[ 1 ] Sim\n[ 2 ] Nao");
+            op = this.sc.next().charAt(0);
+            switch (op){
+                case '1':
+                    List<Departamento> resultado = this.departamentoController.mostraDepartamentos();
+                    if(resultado == null){
+                        System.out.println(">>> Nenhum departamento cadastrado!!");
+                        sair();
+                    }else {
+                        System.out.println("=================== DEPARTAMENTOS ===================");
+                        System.out.println(resultado.size());
 
-                for (int i = 0; i < resultado.size(); i ++) {
-                    Integer idDepartamento = resultado.get(i).getIdDepartamento();
-                    String nomeDepartamento = resultado.get(i).getNomeDepartamento();
-                    String siglaDepartamento = resultado.get(i).getSigla();
-                    String nomeChefe;
-                    if(resultado.get(i).getChefeDepartamento() == null){
-                        nomeChefe = "sem chefe";
-                    }else{
-                        nomeChefe = resultado.get(i).getChefeDepartamento().getNome();
+                        for (int i = 0; i < resultado.size(); i ++) {
+                            Integer idDepartamento = resultado.get(i).getIdDepartamento();
+                            String nomeDepartamento = resultado.get(i).getNomeDepartamento();
+                            String siglaDepartamento = resultado.get(i).getSigla();
+                            String nomeChefe;
+                            if(resultado.get(i).getChefeDepartamento() == null){
+                                nomeChefe = "sem chefe";
+                            }else{
+                                nomeChefe = resultado.get(i).getChefeDepartamento().getNome();
+                            }
+
+                            System.out.println("" +
+                                    "ID: " + idDepartamento + "\nNome: " + nomeDepartamento +
+                                    "\nSigla: " + siglaDepartamento + "\nChefe: "+ nomeChefe);
+                        }
+
+                        do{
+                            System.out.println("\nInforme o ID do departamento: ");
+                            departamentoID = this.sc.nextInt();
+                            departamento = this.departamentoController.pesquisaDepartamentoID(departamentoID);
+                            if(departamento == null){
+                                System.out.println("Departamento não localizado, insira um ID valido!");
+                            }
+                        }while (departamento == null);
                     }
+                    op = '.';
+                    break;
+                case '2':
+                    departamento = null;
+                    op = '.';
+                    break;
+                case '.': //case que acabou
 
-                    System.out.println("" +
-                            "ID: " + idDepartamento + "\nNome: " + nomeDepartamento +
-                            "\nSigla: " + siglaDepartamento + "\nChefe: "+ nomeChefe);
-                }
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
             }
+        }while (op != '.');
 
-            do{
-                System.out.println("\nInforme o ID do departamento: ");
-                departamentoID = this.sc.nextInt();
-                departamento = this.menuController.pesquisaDepartamentoID(departamentoID);
-
-                if(departamento == null){
-                    System.out.println("Departamento não localizado, insira um ID valido!");
-                }
-            }while (departamento == null);
-
-        }else if(op == 'n'){
-            System.out.println("");
-        }
 
         Funcionario funcionarioNovo = new Funcionario(nome, cpf, email, salarioBruto, salarioLiquido, departamento);
 
         //se o funcionario existir
-        if(this.funcionarioController.funcionarioExisteController(funcionarioNovo.getCpf())){
+        if (this.funcionarioController.funcionarioExisteController(funcionarioNovo.getCpf())) {
             return null;
         }
 

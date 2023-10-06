@@ -41,21 +41,6 @@ public class MenuController {
         return resultado;
     }
 
-    public List<Funcionario> mostrarFuncionarios(){
-        return this.relatorioServices.mostrarFuncionarios();
-    }
-
-    public List<Departamento> mostrarDepartamentos(){
-        return this.relatorioServices.mostraDepartamentos();
-    }
-
-    public Funcionario pesquisaFuncionarioID(Integer id){
-        return this.relatorioServices.pesquisaFuncionarioID(id);
-    }
-
-    public Departamento pesquisaDepartamentoID(Integer id){
-        return this.relatorioServices.pesquisaDepartamentoID(id);
-    }
     //relatorios FIM
 
 
