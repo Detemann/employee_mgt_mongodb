@@ -61,6 +61,7 @@ public class ConexaoDB {
             ScriptRunner runSql = new ScriptRunner(connection);
             Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/"+fileName));
             runSql.setLogWriter(null);
+            runSql.setErrorLogWriter(null);
             runSql.runScript(reader);
             return true;
         } catch (Exception e) {
@@ -74,6 +75,7 @@ public class ConexaoDB {
             ScriptRunner runSql = new ScriptRunner(connection);
             Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/"+"DropEverything.sql"));
             runSql.setLogWriter(null);
+            runSql.setErrorLogWriter(null);
             runSql.runScript(reader);
         } catch (Exception ignored) {
             System.out.println("[ConexaoDB - initializeTables] Schema is clear.");
