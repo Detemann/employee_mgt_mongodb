@@ -2,6 +2,7 @@ package sarrussys.main.services.database;
 
 import oracle.jdbc.pool.OracleDataSource;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -16,7 +17,9 @@ public class DatabaseServices {
     public ResultSet fazerConsulta(String sql) {
         try {
             if (sql.isEmpty()) throw new RuntimeException("Sem comando SQL");
-            Statement statement = dataSource.getConnection().createStatement();
+            Connection connection = dataSource.getConnection();
+            connection.setSchema("ANONYMOUS");
+            Statement statement = connection.createStatement();
             return statement.executeQuery(sql);
         } catch (Exception e) {
             System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta \n"
@@ -31,8 +34,10 @@ public class DatabaseServices {
     public int fazerUpdate(String sql) {
         try {
             if (sql.isEmpty()) throw new RuntimeException("Sem comando SQL");
-            Statement statement = dataSource.getConnection().createStatement();
-             return statement.executeUpdate(sql);
+            Connection connection = dataSource.getConnection();
+            connection.setSchema("ANONYMOUS");
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println("[DatabaseServices] Ocorreu um erro durante a manipulação \n"
                     + e.getMessage());

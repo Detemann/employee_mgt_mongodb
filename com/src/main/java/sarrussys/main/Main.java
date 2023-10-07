@@ -11,7 +11,7 @@ public class Main {
         ConexaoDB conection = new ConexaoDB();
         try {
             conection.initDB();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Menu menu = new Menu(conection.getDataSource());
