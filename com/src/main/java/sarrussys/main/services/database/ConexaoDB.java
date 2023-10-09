@@ -42,7 +42,7 @@ public class ConexaoDB {
     }
 
     private Boolean initializeTables() {
-        dropEverything();
+        executeSql("DropEverything");
         try {
             if(!executeSql("CreateTables.sql")) throw new RuntimeException("Erro ao criar tabelas.");
             if(!executeSql("AlterTable.sql")) throw new RuntimeException("Erro ao configurar as tabelas.");
@@ -56,29 +56,16 @@ public class ConexaoDB {
     }
 
     private Boolean executeSql(String fileName) {
-        try  (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             connection.setSchema(defaultSchema);
             ScriptRunner runSql = new ScriptRunner(connection);
-            Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/"+fileName));
+            Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/" + fileName));
             runSql.setLogWriter(null);
             runSql.setErrorLogWriter(null);
             runSql.runScript(reader);
             return true;
         } catch (Exception e) {
             return false;
-        }
-    }
-
-    private void dropEverything() {
-        try  (Connection connection = dataSource.getConnection()) {
-            connection.setSchema(defaultSchema);
-            ScriptRunner runSql = new ScriptRunner(connection);
-            Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/"+"DropEverything.sql"));
-            runSql.setLogWriter(null);
-            runSql.setErrorLogWriter(null);
-            runSql.runScript(reader);
-        } catch (Exception ignored) {
-            System.out.println("[ConexaoDB - initializeTables] Schema is clear.");
         }
     }
 }
