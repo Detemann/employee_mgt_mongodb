@@ -20,6 +20,12 @@ public class Departamento {
         this.chefeDepartamento = null;
     }
 
+    public Departamento(String nome, String sigla, Funcionario funcionario) {
+        this.nomeDepartamento = nome;
+        this.sigla = sigla;
+        this.chefeDepartamento = funcionario;
+    }
+
     public Integer getIdDepartamento() {
         return idDepartamento;
     }

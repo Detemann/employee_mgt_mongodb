@@ -1,6 +1,7 @@
 package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.database.DatabaseServices;
@@ -14,7 +15,6 @@ import java.util.List;
 
 public class DepartamentoService {
     private DatabaseServices databaseServices;
-
     private RelatorioServices relatorioServices;
 
     public DepartamentoService(OracleDataSource conexao){
@@ -23,6 +23,31 @@ public class DepartamentoService {
     }
 
     //iMPLEMENTAR INSERIR DEPARTAMENTO
+    public boolean cadastrarDepartamento(Departamento novoDepartamento){
+        try{
+            String nome = novoDepartamento.getNomeDepartamento();
+            String sigla = novoDepartamento.getSigla();
+            Integer chefeID = null;
+            Funcionario funcionarioChefe = novoDepartamento.getChefeDepartamento();
+            if(funcionarioChefe != null){
+                chefeID = funcionarioChefe.getIdFuncionario();
+            }
+
+            String sql = "INSERT INTO DEPARTAMENTO (NOME, SIGLA, ID_CHEFE)\n" +
+                    "VALUES ('"+nome+"', '"+sigla+"', "+chefeID+")";
+
+            int resultado = this.databaseServices.fazerUpdate(sql);
+            if(resultado == 0){
+                return false;
+            }else{
+                return true;
+            }
+
+        }catch (Exception e){
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
 
 
     public List<Departamento> mostraDepartamentos(){
@@ -95,4 +120,23 @@ public class DepartamentoService {
     }
 
 
+    public boolean departamentoExiste(Integer idDepartamento) {
+        int quantidadeExistente = 0;
+        try{
+            String sql = "SELECT COUNT(*) AS CONTAGEM\n" +
+                    "FROM DEPARTAMENTO\n" +
+                    "WHERE ID_DEPARTAMENTO = '"+idDepartamento+"'";
+
+            ResultSet consulta = this.databaseServices.fazerConsulta(sql);
+            if(consulta.next()){
+                quantidadeExistente = consulta.getInt("CONTAGEM");
+            }
+        }catch (SQLException e) {
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+        }
+        if(quantidadeExistente != 0){
+            return true;
+        }
+        return false;
+    }
 }

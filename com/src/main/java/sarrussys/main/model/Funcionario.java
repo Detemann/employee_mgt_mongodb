@@ -39,6 +39,8 @@ public class Funcionario {
         this.departamento = null;
     }
 
+
+
     public Integer getIdFuncionario() {
         return idFuncionario;
     }

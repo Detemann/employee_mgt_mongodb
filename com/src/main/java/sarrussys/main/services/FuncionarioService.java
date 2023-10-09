@@ -70,22 +70,27 @@ public class FuncionarioService {
         try{
             String sql = "SELECT *\n" +
                     "FROM FUNCIONARIO\n" +
-                    "WHERE ID_FUNCIONARIO = "+id;
-            ResultSet consulta = this.databaseServices.fazerConsulta(sql);
+                    "WHERE ID_FUNCIONARIO = "+id;;
 
-            if (consulta.next()){
-                String nome = consulta.getString("NOME");
-                String cpf = consulta.getString("CPF");
-                String email = consulta.getString("EMAIL");
-                double salarioBruto = consulta.getDouble("SALARIO_BRUTO");
-                double salarioLiquido = consulta.getDouble("SALARIO_LIQUIDO");
-                Integer idDepartamento = consulta.getInt("ID_DEPARTAMENTO");
-                funcionario.setIdFuncionario(id);
+            ResultSet consultaFunc = this.databaseServices.fazerConsulta(sql);
+
+            if (consultaFunc.next()){
+                Integer idFuncionario = consultaFunc.getInt("ID_FUNCIONARIO");
+                String nome = consultaFunc.getString("NOME");
+                String cpf = consultaFunc.getString("CPF");
+                String email = consultaFunc.getString("EMAIL");
+                double salarioBruto = consultaFunc.getDouble("SALARIO_BRUTO");
+                double salarioLiquido = consultaFunc.getDouble("SALARIO_LIQUIDO");
+                Integer idDepartamento = consultaFunc.getInt("ID_DEPARTAMENTO");
+
+                funcionario.setIdFuncionario(idFuncionario);
                 funcionario.setNome(nome);
                 funcionario.setCpf(cpf);
                 funcionario.setEmail(email);
                 funcionario.setSalarioBruto(salarioBruto);
                 funcionario.setSalarioLiquido(salarioLiquido);
+                Departamento departamento = this.relatorioServices.pesquisaDepartamentoIdRelatorioService(idDepartamento);
+                funcionario.setDepartamento(departamento);
                 return funcionario;
             }
 

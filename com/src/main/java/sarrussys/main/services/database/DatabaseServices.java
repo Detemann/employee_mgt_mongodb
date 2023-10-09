@@ -20,13 +20,27 @@ public class DatabaseServices {
             Statement statement = dataSource.getConnection().createStatement();
             return statement.executeQuery(sql);
         } catch (Exception e) {
-            System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta \n"
-                    + e.getMessage());
+            System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta" + e.getMessage());
             return null;
         }
     }
 
     public boolean cadastrarFuncionario(String sql) {
+        try {
+            if (sql.isEmpty()) throw new RuntimeException("Sem comando SQL");
+
+            Statement statement = dataSource.getConnection().createStatement();
+            int resultado = statement.executeUpdate(sql);
+
+            // Se pelo menos uma linha foi inserida com sucesso, retornar true
+            return resultado > 0;
+        } catch (SQLException e) {
+            System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta \n" + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean cadastrarDepartamento(String sql) {
         try {
             if (sql.isEmpty()) throw new RuntimeException("Sem comando SQL");
 

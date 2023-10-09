@@ -188,7 +188,8 @@ public class Menu {
             op = this.sc.nextInt();
             do{
                 switch (op){
-                    case 1: //inserir novo funcionario
+                    //inserir novo funcionario
+                    case 1:
                         Funcionario novoFuncionario = novoFuncionario();
 
                         if(novoFuncionario == null){
@@ -208,8 +209,25 @@ public class Menu {
 
                         }
                         break;
+                        //Inserir novo DEPARTAMENTO
                     case 2:
+                        Departamento novoDepartamento = novoDepartamento();
+                        if(novoDepartamento == null){
+                            System.out.println("\n\n>>> Departamento já cadastrado!");
+                        }else{
+                            if(departamentoController.cadastrarDepartamento(novoDepartamento)){
+                                System.out.println("\n\n>>> Departamento Inserido com Sucesso!");
+                                System.out.println("Nome: "+novoDepartamento.getNomeDepartamento());
+                                System.out.println("Sigla: "+novoDepartamento.getSigla());
 
+                                //SE EXISTIR UM CHEFE NO DEPARTAMENTO ELE MOSTRA
+                                if(novoDepartamento.getChefeDepartamento() != null){
+                                    System.out.println("Departamento: "+novoDepartamento.getChefeDepartamento().getNome());
+                                }else{
+                                    System.out.println("Departamento: sem chefe");
+                                }
+                            }
+                        }
                         break;
                     case 0:
                         System.out.println("SAINDO...");
@@ -245,6 +263,7 @@ public class Menu {
     public Funcionario novoFuncionario() throws IOException {
         System.out.println("Informe o nome do funcionario: ");
         String nome = this.sc.next();
+        sc.nextLine();
 
         System.out.println("Informe o CPF do funcionario: ");
         String cpf = this.sc.next();
@@ -294,7 +313,6 @@ public class Menu {
                         sair();
                     }else {
                         System.out.println("=================== DEPARTAMENTOS ===================");
-                        System.out.println(resultado.size());
 
                         for (int i = 0; i < resultado.size(); i ++) {
                             Integer idDepartamento = resultado.get(i).getIdDepartamento();
@@ -347,6 +365,75 @@ public class Menu {
         return funcionarioNovo;
     }
 
+    public Departamento novoDepartamento() throws IOException {
+        System.out.println("Informe o nome do Departamento: ");
+        String nome = this.sc.next();
+        sc.nextLine();
+        System.out.println("Informe a sigla do Departamento: ");
+        String sigla = this.sc.next();
+
+        Funcionario funcionario = null;
+        char op;
+        do{
+            System.out.println("Deseja designar o chefe do Departamento?\n[ 1 ] Sim\n[ 2 ] Nao");
+            op = this.sc.next().charAt(0);
+            switch (op){
+                case '1':
+                    List<Funcionario> resultado = this.funcionarioController.mostrarFuncionarios();
+
+                    if(resultado == null){
+                        System.out.println(">>> Nenhum funcionario cadastrado!!");
+                        sair();
+                    }else {
+                        System.out.println("=================== FUNCIONARIOS ===================");
+
+                        for (int i = 0; i < resultado.size(); i ++) {
+
+                            Integer idFuncionario = resultado.get(i).getIdFuncionario();
+                            String nomeFuncionario = resultado.get(i).getNome();
+                            String cpf = resultado.get(i).getCpf();
+
+                            String nomeDepartamento;
+                            if(resultado.get(i).getDepartamento() == null){
+                                nomeDepartamento = "sem departamento";
+                            }else{
+                                nomeDepartamento = resultado.get(i).getDepartamento().getNomeDepartamento();
+                            }
+
+                            System.out.println("" +
+                                    "ID: " + idFuncionario + "\nNome: " + nomeFuncionario +
+                                    "\nCPF: " + cpf + "\nDepartamento: "+ nomeDepartamento);
+                        }
+
+                        do{
+                            System.out.println("\nInforme o ID do Funcionario: ");
+                            int funcionarioID = this.sc.nextInt();
+                            funcionario = this.funcionarioController.pesquisaFuncionarioID(funcionarioID);
+                            if(funcionario == null){
+                                System.out.println("Funcionario não localizado, insira um ID valido!");
+                            }
+                        }while (funcionario == null);
+                    }
+                    op = '.';
+                    break;
+                case '2':
+                    funcionario = null;
+                    op = '.';
+                    break;
+                case '.': //case que acabou
+
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+        }while (op != '.');
+
+        Departamento departamentoNovo = new Departamento(nome, sigla, funcionario);
+
+        return departamentoNovo;
+    }
+
     public void sair() throws IOException {
         boolean sair = false;
 
@@ -359,8 +446,4 @@ public class Menu {
             }
         }
     }
-
-
-
-
 }

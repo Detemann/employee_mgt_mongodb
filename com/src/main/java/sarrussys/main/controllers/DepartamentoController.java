@@ -16,7 +16,9 @@ public class DepartamentoController {
         this.departamentoService = new DepartamentoService(conexao);
     }
 
-
+    public boolean cadastrarDepartamento(Departamento novoDepartamento){
+        return this.departamentoService.cadastrarDepartamento(novoDepartamento);
+    }
 
 
     public List<Departamento> mostraDepartamentos(){
@@ -29,6 +31,10 @@ public class DepartamentoController {
         return this.departamentoService.pesquisaDepartamentoID(id);
     }
 
+
+    public boolean departamentoExiste(Integer idDepartamento) {
+        return this.departamentoService.departamentoExiste(idDepartamento);
+    }
 
 
 }
