@@ -1,3 +1,12 @@
 sarrussys\main\Main.class
-sarrussys\main\database\ConexaoDB.class
 sarrussys\main\model\Funcionario.class
+sarrussys\main\controllers\MenuController.class
+sarrussys\main\services\FuncionarioService.class
+sarrussys\main\controllers\DepartamentoController.class
+sarrussys\main\services\DepartamentoService.class
+sarrussys\main\services\database\DatabaseServices.class
+sarrussys\main\model\Departamento.class
+sarrussys\main\services\RelatorioServices.class
+sarrussys\main\controllers\FuncionarioController.class
+sarrussys\main\services\database\ConexaoDB.class
+sarrussys\main\views\Menu.class

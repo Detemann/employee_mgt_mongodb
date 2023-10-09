@@ -37,8 +37,13 @@ public class FuncionarioService {
             String sql = "INSERT INTO FUNCIONARIO (NOME, CPF, EMAIL, SALARIO_BRUTO, SALARIO_LIQUIDO, ID_DEPARTAMENTO)\n" +
                     "VALUES" +
                     " ('"+nome+"', '"+cpf+"', '"+email+"', "+salarioBruto+", "+salarioLiquido+", "+departamentoID+")";
+            int resultado = this.databaseServices.fazerUpdate(sql);
 
-            return this.databaseServices.cadastrarFuncionario(sql);
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
         }catch (Exception e) {
             System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
