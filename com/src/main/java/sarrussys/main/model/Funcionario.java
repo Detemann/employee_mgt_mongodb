@@ -1,5 +1,6 @@
 package sarrussys.main.model;
 
+
 public class Funcionario {
     private Integer idFuncionario;
     private String nome;
@@ -7,14 +8,25 @@ public class Funcionario {
     private String email;
     private Double salarioBruto;
     private Double salarioLiquido;
+    private Departamento departamento;
 
-    public Funcionario(Integer idFuncionario, String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido) {
+    public Funcionario(Integer idFuncionario, String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, Departamento departamento) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.salarioBruto = salarioBruto;
         this.salarioLiquido = salarioLiquido;
+        this.departamento = departamento;
+    }
+
+    public Funcionario(String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, Departamento departamento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.salarioBruto = salarioBruto;
+        this.salarioLiquido = salarioLiquido;
+        this.departamento = departamento;
     }
 
     public Funcionario() {
@@ -24,7 +36,10 @@ public class Funcionario {
         this.email = null;
         this.salarioBruto = null;
         this.salarioLiquido = null;
+        this.departamento = null;
     }
+
+
 
     public Integer getIdFuncionario() {
         return idFuncionario;
@@ -72,6 +87,14 @@ public class Funcionario {
 
     public void setSalarioLiquido(Double salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override

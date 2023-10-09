@@ -22,12 +22,10 @@ public class DatabaseServices {
             Statement statement = connection.createStatement();
             return statement.executeQuery(sql);
         } catch (Exception e) {
-            System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta \n"
-                    + e.getMessage());
+            System.out.println("[DatabaseServices] Ocorreu um erro durante a consulta" + e.getMessage());
             return null;
         }
     }
-
     /**
      * @return Retorna a quatidade de linhas modificadas ou 0 caso falhe ou nada seja modificado
      * */

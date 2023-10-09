@@ -1,6 +1,8 @@
 package sarrussys.main.controllers;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.model.Departamento;
+import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.RelatorioServices;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class MenuController {
         int resultado = this.relatorioServices.contarDepartamentosService();
         return resultado;
     }
+
     //relatorios FIM
 
 
