@@ -1,4 +1,4 @@
-package sarrussys.main.services.database;
+package sarrussys.main.database;
 
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.pool.OracleDataSource;
@@ -42,7 +42,7 @@ public class ConexaoDB {
     }
 
     private Boolean initializeTables() {
-        executeSql("DropEverything");
+        executeSql("DropEverything.sql");
         try {
             if(!executeSql("CreateTables.sql")) throw new RuntimeException("Erro ao criar tabelas.");
             if(!executeSql("AlterTable.sql")) throw new RuntimeException("Erro ao configurar as tabelas.");

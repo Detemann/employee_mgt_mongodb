@@ -1,4 +1,4 @@
-package sarrussys.main.services.database;
+package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
 
