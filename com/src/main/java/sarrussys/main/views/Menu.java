@@ -262,8 +262,8 @@ public class Menu {
 
     public Funcionario novoFuncionario() throws IOException {
         System.out.println("Informe o nome do funcionario: ");
-        String nome = this.sc.next();
         sc.nextLine();
+        String nome = this.sc.nextLine();
 
         System.out.println("Informe o CPF do funcionario: ");
         String cpf = this.sc.next();
@@ -367,8 +367,9 @@ public class Menu {
 
     public Departamento novoDepartamento() throws IOException {
         System.out.println("Informe o nome do Departamento: ");
-        String nome = this.sc.next();
         sc.nextLine();
+        String nome = this.sc.nextLine();;
+
         System.out.println("Informe a sigla do Departamento: ");
         String sigla = this.sc.next();
 

@@ -1,6 +1,6 @@
 package sarrussys.main;
 
-import sarrussys.main.services.database.ConexaoDB;
+import sarrussys.main.database.ConexaoDB;
 import sarrussys.main.views.Menu;
 import java.io.IOException;
 
