@@ -136,4 +136,62 @@ public class DepartamentoService {
         }
         return false;
     }
+
+    public boolean deletarDepartamento(Departamento departamento) {
+        try {
+            String sql = "DELETE FROM DEPARTAMENTO\n" +
+                    "WHERE ID_DEPARTAMENTO = "+departamento.getIdDepartamento();
+            int resultado = this.databaseServices.fazerUpdate(sql);
+
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
+
+        }catch (Exception e) {
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean verificaRelacionamentoDepartamentoxFuncionario(Integer idDepartamento){
+        int relacionamentos = 0;
+        try{
+            String sql = "SELECT COUNT(1) TOTAL_DEPARTAMENTO FROM FUNCIONARIO \n" +
+                    "WHERE ID_DEPARTAMENTO = "+idDepartamento;
+
+            ResultSet consulta = this.databaseServices.fazerConsulta(sql);
+            if(consulta.next()){
+                relacionamentos = consulta.getInt("TOTAL_DEPARTAMENTO");
+            }
+        }catch (SQLException e) {
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+        }
+
+        if(relacionamentos != 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeFuncionariosdoDepartamento(Departamento departamento) {
+        try {
+            String sql = "UPDATE FUNCIONARIO\n" +
+                    "SET ID_DEPARTAMENTO = NULL\n" +
+                    "WHERE ID_DEPARTAMENTO ="+departamento.getIdDepartamento();
+
+            int resultado = this.databaseServices.fazerUpdate(sql);
+
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
+
+        }catch (Exception e) {
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
 }

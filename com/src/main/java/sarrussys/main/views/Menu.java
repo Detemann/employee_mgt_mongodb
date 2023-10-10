@@ -19,12 +19,14 @@ public class Menu {
     private MenuController menuController;
     private FuncionarioController funcionarioController;
     private DepartamentoController departamentoController;
+    private DeletarRegistros deletarRegistros;
 
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
         this.departamentoController = new DepartamentoController(conexao);
+        this.deletarRegistros = new DeletarRegistros(conexao);
     }
 
     public void inicializacao() throws IOException {
@@ -81,7 +83,7 @@ public class Menu {
                     break;
                 case 3:
                     //remover registros
-                    System.out.println("Remover registros");
+                    deletarRegistros.inicio();
                     break;
                 case 4:
                     //atualizar registros
@@ -328,6 +330,7 @@ public class Menu {
                             System.out.println("" +
                                     "ID: " + idDepartamento + "\nNome: " + nomeDepartamento +
                                     "\nSigla: " + siglaDepartamento + "\nChefe: "+ nomeChefe);
+                            System.out.println("-------------------");
                         }
 
                         do{
@@ -404,6 +407,7 @@ public class Menu {
                             System.out.println("" +
                                     "ID: " + idFuncionario + "\nNome: " + nomeFuncionario +
                                     "\nCPF: " + cpf + "\nDepartamento: "+ nomeDepartamento);
+                            System.out.println("-------------------");
                         }
 
                         do{
