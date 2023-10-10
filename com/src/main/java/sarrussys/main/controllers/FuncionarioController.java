@@ -34,4 +34,8 @@ public class FuncionarioController {
         return resultado;
     }
 
+    public boolean deletarFuncionario(Funcionario funcionario){
+        return this.funcionarioService.deletarFuncionario(funcionario);
+    }
+
 }

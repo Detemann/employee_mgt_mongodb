@@ -138,5 +138,22 @@ public class FuncionarioService {
         }
     }
 
+    public boolean deletarFuncionario(Funcionario funcionario){
+        try {
+            String sql = "DELETE FROM FUNCIONARIO\n" +
+                    "WHERE ID_FUNCIONARIO = "+funcionario.getIdFuncionario();
+            int resultado = this.databaseServices.fazerUpdate(sql);
+
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
+
+        }catch (Exception e) {
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
 
 }

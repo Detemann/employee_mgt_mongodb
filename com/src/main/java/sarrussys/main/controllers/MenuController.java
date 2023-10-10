@@ -42,7 +42,9 @@ public class MenuController {
     }
 
     //relatorios FIM
-
+    public Funcionario pesquisaFuncionarioIdRelatorioService(Integer id){
+        return this.relatorioServices.pesquisaFuncionarioIdRelatorioService(id);
+    }
 
 
 }
