@@ -24,20 +24,25 @@ public class DeletarRegistros {
 
     public void inicio(){
         try {
-            System.out.println("O que deseja Deletar: ");
-            System.out.println("[ 1 ] Funcionario\n[ 2 ] Departamento");
-            int op = sc.nextInt();
-            if(op == 1){
-                if(deletarFuncionario()){
-                    System.out.println(">>> Funcionario DELETADO!");
-                    sair();
+            int continua;
+            do{
+                System.out.println("O que deseja Deletar: ");
+                System.out.println("[ 1 ] Funcionario\n[ 2 ] Departamento");
+                int op = sc.nextInt();
+                if(op == 1){
+                    if(deletarFuncionario()){
+                        System.out.println(">>> Funcionario DELETADO!");
+                        sair();
+                    }
+                }else if(op == 2){
+                    if(deletarDepartamento()){
+                        System.out.println(">>> Departamento DELETADO!");
+                        sair();
+                    }
                 }
-            }else if(op == 2){
-                if(deletarDepartamento()){
-                    System.out.println(">>> Departamento DELETADO!");
-                    sair();
-                }
-            }
+                System.out.println("Deseja continuar deletando?\n[ 1 ] Sim\n[ 2 ] Não");
+                continua = sc.nextInt();
+            }while (continua == 1);
 
         }catch (Exception e){
             System.out.println("[DeletarRegstros] Erro Inesperado \n"+e.getMessage());
