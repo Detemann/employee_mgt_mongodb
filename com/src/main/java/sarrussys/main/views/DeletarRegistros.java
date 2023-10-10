@@ -3,7 +3,6 @@ package sarrussys.main.views;
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
-import sarrussys.main.controllers.MenuController;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 
@@ -82,24 +81,50 @@ public class DeletarRegistros {
                 departamento = this.departamentoController.pesquisaDepartamentoID(id);
 
                 if(departamento == null){
-                    System.out.println("Departamento não localizado, insira um ID valido!");
+                    System.out.println(">>> Departamento não localizado, insira um ID valido!");
                 }
             }while (departamento == null);
 
             //confirmacao
-            System.out.println("\n\nDepartamento a ser DELETADO: ");
+            System.out.println("\n\n>>> Departamento a ser DELETADO: ");
             System.out.println("Nome: "+departamento.getNomeDepartamento());
             System.out.println("\n[ 1 ] Confirmar\n[ 2 ] Cancelar");
             int op = sc.nextInt();
 
             if(op == 1){
-                if(departamentoController.deletarDepartamento(departamento)){
-                    return true;
-                }else {
-                    return false;
+                //se o departamento está associado a algum Funcionario ele vai informar
+                if(departamentoController.verificaRelacionamentoDepartamentoxFuncionario(departamento.getIdDepartamento())){
+                    System.out.println("\n\n>>> O Departamento escolhido está associado a um Funcionário");
+                    System.out.println("Deseja excluir realmente?\n[ 1 ] Sim\n[ 2 ] Cancelar");
+                    int op2 = sc.nextInt();
+
+                    if(op2 == 1){ //excluindo departamento com associacao
+                        //se a remocao dos funcionarios desse departamento foi bem sucedida
+                        if(departamentoController.removeFuncionariosdoDepartamento(departamento)){
+                            //verifica se o departamento foi deletado corretamente
+                            if(departamentoController.deletarDepartamento(departamento)){
+                                return true; //departamento excluido com sucesso
+                            }else{
+                                return false; //departamento não foi excluido por algum motivo
+                            }
+
+                        }else {
+                            return false; //deu algum problema na remoção dos funcionarios da tabela departamento
+                        }
+                    }else{
+                        System.out.println("\n>>> Operação Cancelada");
+                        sair();
+                        return false;
+                    }
+                }else { //bloco que deleta direto o departamento pois nao existe nenhum funcionario iniserido nele
+                    if(departamentoController.deletarDepartamento(departamento)){
+                        return true;
+                    }else {
+                        return false;
+                    }
                 }
             }else {
-                System.out.println("\nOperação Cancelada");
+                System.out.println("\n>>> Operação Cancelada");
                 sair();
                 return false;
             }
