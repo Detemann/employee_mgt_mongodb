@@ -10,11 +10,11 @@ import java.sql.*;
 import java.util.Properties;
 
 public class ConexaoDB {
-    private final static String DB_url = "jdbc:oracle:thin:@//localhost:1521/XEPDB1";
+    private final static String DB_url = "jdbc:oracle:thin:@//localhost:1521/xe";
 
-    private final static String DB_user = "system";
+    private final static String DB_user = "labdatabase";
 
-    private final static String DB_password = "senha123";
+    private final static String DB_password = "labDatabase2022";
 
     private final static String defaultSchema = "ANONYMOUS";
 
@@ -60,8 +60,8 @@ public class ConexaoDB {
             connection.setSchema(defaultSchema);
             ScriptRunner runSql = new ScriptRunner(connection);
             Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/" + fileName));
-            runSql.setLogWriter(null);
-            runSql.setErrorLogWriter(null);
+            /*runSql.setLogWriter(null);
+            runSql.setErrorLogWriter(null);*/
             runSql.runScript(reader);
             return true;
         } catch (Exception e) {
