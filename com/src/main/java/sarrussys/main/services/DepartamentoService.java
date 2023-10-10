@@ -136,4 +136,22 @@ public class DepartamentoService {
         }
         return false;
     }
+
+    public boolean deletarDepartamento(Departamento departamento) {
+        try {
+            String sql = "DELETE FROM DEPARTAMENTO\n" +
+                    "WHERE ID_DEPARTAMENTO = "+departamento.getIdDepartamento();
+            int resultado = this.databaseServices.fazerUpdate(sql);
+
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
+
+        }catch (Exception e) {
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
 }

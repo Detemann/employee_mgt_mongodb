@@ -37,4 +37,7 @@ public class DepartamentoController {
     }
 
 
+    public boolean deletarDepartamento(Departamento departamento) {
+        return this.departamentoService.deletarDepartamento(departamento);
+    }
 }
