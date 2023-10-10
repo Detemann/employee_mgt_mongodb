@@ -2,6 +2,7 @@ package sarrussys.main.controllers;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
+import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.DepartamentoService;
 
 
@@ -44,8 +45,10 @@ public class DepartamentoController {
         return this.departamentoService.verificaRelacionamentoDepartamentoxFuncionario(id);
     }
 
+
     //altera o ID_FUNCIONARIO do DEPARTAMENTO
     public boolean removeFuncionariosdoDepartamento(Departamento departamento) {
         return this.departamentoService.removeFuncionariosdoDepartamento(departamento);
     }
+
 }

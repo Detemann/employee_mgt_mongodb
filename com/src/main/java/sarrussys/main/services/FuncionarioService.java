@@ -156,4 +156,43 @@ public class FuncionarioService {
         }
     }
 
+    public boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
+        int relacionamentos = 0;
+        try{
+            String sql = "SELECT COUNT(1) TOTAL_FUNCIONARIO FROM DEPARTAMENTO \n" +
+                    "WHERE ID_CHEFE = "+idFuncionario;
+
+            ResultSet consulta = this.databaseServices.fazerConsulta(sql);
+            if(consulta.next()){
+                relacionamentos = consulta.getInt("TOTAL_FUNCIONARIO");
+            }
+        }catch (SQLException e) {
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: \n"+e.getMessage());
+        }
+
+        if(relacionamentos != 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeDepartamentodoFuncionario(Funcionario funcionario) {
+        try {
+            String sql = "UPDATE DEPARTAMENTO\n" +
+                    "SET ID_CHEFE = NULL\n" +
+                    "WHERE ID_CHEFE ="+funcionario.getIdFuncionario();
+
+            int resultado = this.databaseServices.fazerUpdate(sql);
+
+            if(resultado == 0){
+                return false;
+            }else {
+                return true;
+            }
+
+        }catch (Exception e) {
+            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
 }

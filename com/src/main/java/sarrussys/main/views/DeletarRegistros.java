@@ -58,6 +58,7 @@ public class DeletarRegistros {
             for (int i = 0; i < resultado.size(); i ++) {
                 Integer idDepartamento = resultado.get(i).getIdDepartamento();
                 String nomeDepartamento = resultado.get(i).getNomeDepartamento();
+
                 String nomeChefe;
                 if(resultado.get(i).getChefeDepartamento() == null){
                     nomeChefe = "sem chefe";
@@ -163,13 +164,14 @@ public class DeletarRegistros {
 
             //escolha do funcionario para deletar
             Funcionario funcionario;
+
             do{
                 System.out.println("Informe o ID do Funcionario para DELETAR: ");
                 Integer id = sc.nextInt();
                 funcionario = this.funcionarioController.pesquisaFuncionarioID(id);
 
                 if(funcionario == null){
-                    System.out.println("Funcionario não localizado, insira um ID valido!");
+                    System.out.println(">>> Funcionario não localizado, insira um ID valido!");
                 }
             }while (funcionario == null);
 
@@ -177,17 +179,43 @@ public class DeletarRegistros {
             System.out.println("\n\nFuncionário a ser DELETADO: ");
             System.out.println("Nome: "+funcionario.getNome());
             System.out.println("CPF: "+funcionario.getCpf());
+
             System.out.println("\n[ 1 ] Confirmar\n[ 2 ] Cancelar");
             int op = sc.nextInt();
 
             if(op == 1){
-                if(funcionarioController.deletarFuncionario(funcionario)){
-                    return true;
-                }else {
-                    return false;
+                //se o FUNCIONARIO está associado a algum DEPARTAMENTO ele vai informar
+                if(funcionarioController.verificaRelacionamentFuncionarioxDepartamento(funcionario.getIdFuncionario())){
+                    System.out.println("\n\n>>> O Funcionario escolhido está associado a um Departamento");
+                    System.out.println("Deseja excluir realmente?\n[ 1 ] Sim\n[ 2 ] Cancelar");
+                    int op2 = sc.nextInt();
+
+                    if(op2 == 1){ //excluindo funcionario com associacao
+                        //se a remocao do departamento desse funcionario foi bem sucedida
+                        if(funcionarioController.removeDepartamentodoFuncionario(funcionario)){
+                            //verifica se o funcionariio foi deletado corretamente
+                            if(funcionarioController.deletarFuncionario(funcionario)){
+                                return true; //funcionario excluido com sucesso
+                            }else{
+                                return false; //funcionario não foi excluido por algum motivo
+                            }
+                        }else {
+                            return false; //deu algum problema na remoção dos funcionarios da tabela departamento
+                        }
+                    }else{
+                        System.out.println("\n>>> Operação Cancelada");
+                        sair();
+                        return false;
+                    }
+                }else { //bloco que deleta direto o funcionario pois nao existe nenhum departamento iniserido nele
+                    if(funcionarioController.deletarFuncionario(funcionario)){
+                        return true;
+                    }else {
+                        return false;
+                    }
                 }
             }else {
-                System.out.println("\nOperação Cancelada");
+                System.out.println("\n>>> Operação Cancelada");
                 sair();
                 return false;
             }

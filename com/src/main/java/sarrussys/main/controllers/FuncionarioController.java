@@ -38,4 +38,11 @@ public class FuncionarioController {
         return this.funcionarioService.deletarFuncionario(funcionario);
     }
 
+    public boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
+        return this.funcionarioService.verificaRelacionamentFuncionarioxDepartamento(idFuncionario);
+    }
+
+    public boolean removeDepartamentodoFuncionario(Funcionario funcionario) {
+        return this.funcionarioService.removeDepartamentodoFuncionario(funcionario);
+    }
 }
