@@ -7,22 +7,22 @@
 </h4>
 
 ## Índice 
-* [Descrição do Projeto](#descrição-do-projeto)
-* [Pessoas Desenvolvedoras do Projeto](#desenvolvedores)
-* [Tecnologias utilizadas](#Tecnologias-Utilizadas)
-* [Organização do Projeto](#organização-do-Projeto)
-* [Instalando o Oracle Database](#instalar-banco)
-* [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
-* [Licença](#licença)
-* [Conclusão](#conclusão)
+* [Descrição do Projeto](#pushpin-descrição-do-projeto)
+* [Pessoas Desenvolvedoras do Projeto](#pushpin-desenvolvedores)
+* [Tecnologias utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
+* [Organização do Projeto](#pushpin-organização-do-projeto)
+* [Demonstração da Aplicação](#pushpin-demonstração-da-aplicação)
+* [Contato](#pushpin-contatos)
 
 ## :pushpin: Descrição do Projeto:
 Esse sistema foi desenvolvido como parte da disciplina de Banco de Dados 2023/2 ministrada pelo Professor Howard Rotti. Ele consiste em um conjunto de tabelas projetadas para a gestão de informações relacionadas aos funcionários, sendo as principais tabelas deste projeto: "funcionarios" e "departamentos".
+
+Quando a aplicação é executada, o sistema automaticamente gera todas as tabelas e estabelece os relacionamentos necessários.
 <br>
 
 ## :pushpin: Desenvolvedores:
-| [<img src="https://avatars.githubusercontent.com/u/110741308?v=4" width=115><br><sub>Lucas Detemann</sub>](https://github.com/Detemann) |  [<img src="https://avatars.githubusercontent.com/u/105672201?v=4" width=115><br><sub>Wanderson Gonçalves</sub>](https://github.com/Wandersontr01) | 
-| :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/110741308?v=4" width=115><br><sub>Lucas Detemann</sub>](https://github.com/Detemann) |  [<img src="https://avatars.githubusercontent.com/u/147534346?v=4" width=115><br><sub>Natalia Tayar</sub>](https://github.com/tayarnat) | [<img src="https://avatars.githubusercontent.com/u/105672201?v=4" width=115><br><sub>Wanderson Gonçalves</sub>](https://github.com/Wandersontr01) |
+| :---: | :---: | :---: |
 
 <br>
 
@@ -37,9 +37,46 @@ Esse sistema foi desenvolvido como parte da disciplina de Banco de Dados 2023/2 
 
 
 ## :pushpin: Organização do Projeto:
-- [Conexão](com/src/main/java/sarrussys/main/database/ConexaoDB.java): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoDB.java) de conexão com o banco de dados Oracle.<br>
-- [Modelos](com/src/main/java/sarrussys/main/model): Nesse diretório encontram-ser as classes das entidades descritas no diagrama relacional.<br>
-- [Services](com/src/main/java/sarrussys/main/services): Nesse diretório encontra-se a [classe](com/src/main/java/sarrussys/main/services/RelatorioServices.java) responsável por gerar todos os relatórios do sistema.<br>
-- [controller](com/src/main/java/sarrussys/main/controllers): Nesse diretório encontram-sem as classes controladoras, responsáveis por realizar inserção, alteração e exclusão dos registros das tabelas.
+- [Diagrams](xxxxxxx): Nesse diretório está o [diagrama relacional](xxxxxxxxxxxxx) (lógico) do sistema.
+- [sql](com/src/main/resources/sql): Nesse diretório estão os scripts para criação das tabelas e inserção de dados fictícios para testes do sistema.
+  * Certifique-se de que o usuário do banco possui todos os privilégios antes de executar os scripts de criação, caso ocorra erro, execute o comando a seguir com o superusuário via SQL Developer: `GRANT ALL PRIVILEGES TO LABDATABASE;`
+  * [CreateTables.sql](com/src/main/resources/sql/CreateTables.sql): script responsável pela criação das tabelas.
+  * [AlterTabela.sql](com/src/main/resources/sql/AlterTable.sql): script responsável pela criação dos relacionamentos.
+  * [InsertData.sql](com/src/main/resources/sql/InsertData.sql): script responsável pela inserção dos registros fictícios para testes do sistema.
+- [main](com/src/main/java/sarrussys/main): Nesse diretório estão os scripts do sistema:
+  * [Conexão](com/src/main/java/sarrussys/main/database/ConexaoDB.java): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoDB.java) de conexão com o banco de dados Oracle.
+    - Exemplo de utilização para consultas simples:<br>
+      ```Java
+       public List<String> relatorioDepartamentoChefe(){
+        List<String> resultado = new ArrayList<>();
+        try {
+            ResultSet consulta = this.databaseServices.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, FUNCIONARIO.NOME AS Nome_Chefe\n" +
+                    "FROM DEPARTAMENTO\n" +
+                    "LEFT JOIN FUNCIONARIO ON DEPARTAMENTO.ID_CHEFE = FUNCIONARIO.ID_FUNCIONARIO");
+            while(consulta.next()) {
+                resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
+                resultado.add(consulta.getString("NOME_CHEFE"));
+            }
+            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
+                return resultado;
+            }else{
+                return null;
+            }
+        }catch (SQLException e) {
+            System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
+        }
+      }
+   
+  
+  * [Modelos](com/src/main/java/sarrussys/main/model): Nesse diretório encontram-ser as classes das entidades descritas no diagrama relacional.<br>
+  * [Services](com/src/main/java/sarrussys/main/services): Nesse diretório encontra-se a [classe](com/src/main/java/sarrussys/main/services/RelatorioServices.java) responsável por gerar todos os relatórios do sistema.<br>
+  * [controller](com/src/main/java/sarrussys/main/controllers): Nesse diretório encontram-sem as classes controladoras, responsáveis por realizar inserção, alteração e exclusão dos registros das tabelas.
 <br>
 
+## :pushpin: Demonstração da Aplicação:
+
+## :pushpin: Contatos:
+
+| <img src="https://avatars.githubusercontent.com/u/110741308?v=4" width=115><br><sub>Lucas Detemann</sub><br> [![Linkedin: Lucas](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/lucasdetemann/) [![Hotmail: Lucas](https://img.shields.io/badge/-Email-blue?%23E4405F?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:lucas.deteman@aluno.faesa.br) | <img src="https://avatars.githubusercontent.com/u/147534346?v=4" width=115><br><sub>Natalia Tayar</sub><br> [![Linkedin: Natalia](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/natalia-tayar-302577251/) [![Hotmail: Lucas](https://img.shields.io/badge/-Email-blue?%23E4405F?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:natalia.tayar@aluno.faesa.br) | <img src="https://avatars.githubusercontent.com/u/105672201?v=4" width=115><br><sub>Wanderson Gonçalves</sub><br> [![Linkedin: Wanderson](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/wandersonfg/) [![Hotmail: Wanderson](https://img.shields.io/badge/-Email-blue?%23E4405F?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:wanderson.f.g@hotmail.com) |
+| :---: | :---: | :---: | 
