@@ -79,13 +79,13 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 
 Assista a demonstrações em vídeo da aplicação para entender seu funcionamento. Clique nos links abaixo para acessar os vídeos:
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Video_Completo-red?style=flat-square&logo=Youtube&logoColor=white)](linkdovideocompleto)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Video_Completo-red?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/watch?v=uj2s4CWyqoA&ab_channel=Wandersontr)
   
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Inserir_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](linkdoinserirregistros)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Inserir_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=52)
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Remover_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](linkdoremoverregistros)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Remover_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=123)
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Atualizar_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](linkdoatualizarregistros)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Atualizar_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=142)
 
 
 ## :pushpin: Executando a Aplicação
