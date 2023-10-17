@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static sarrussys.main.views.Menu.clearScreen;
+
 public class AtualizarRegistro {
     private DepartamentoController departamentoController;
     private FuncionarioController funcionarioController;
@@ -21,6 +23,7 @@ public class AtualizarRegistro {
         this.funcionarioController = new FuncionarioController(dataSource);
     }
     public void atualizarRegistro() throws InterruptedException {
+        clearScreen();
         int op;
         boolean aa = true;
         do {
@@ -182,6 +185,7 @@ public class AtualizarRegistro {
      * @description 1 é igual a Funcionario e 2 é igual a Departamento
      */
     public void mostraObjeto (int type) {
+        clearScreen();
         switch (type) {
             case 1:
                 List<Funcionario> funcionarios = funcionarioController.mostrarFuncionarios();

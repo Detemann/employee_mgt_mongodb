@@ -104,6 +104,7 @@ public class Menu {
     }
 
     public void relatorios() throws IOException {
+        clearScreen();
         System.out.println("[1] Relatório 1 - Consulta o numero de funcionarios em cada Departamento\n" +
                 "[2] Relatorio 2 - Consulta cada Funcionario e seu respectivo Departamento\n" +
                 "[3] Relatorio 3 - Consulta cada Departamento e o nome do seu respectivo Chefe\n" +
@@ -182,7 +183,7 @@ public class Menu {
 
     //meu METODO
     private void inserirRegistros() {
-
+        clearScreen();
         System.out.println("========================= INSERIR REGISTROS =========================");
         System.out.println("Selecione a tabela que deseja inserir novo Registro");
         System.out.println("   [ 1 ] Funcionarios\n   [ 2 ] Departamentos");
