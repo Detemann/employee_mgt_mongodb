@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import static sarrussys.main.views.Menu.clearScreen;
+
 public class DeletarRegistros {
     private Scanner sc;
     private DepartamentoController departamentoController;
@@ -23,6 +25,7 @@ public class DeletarRegistros {
     }
 
     public void inicio(){
+        clearScreen();
         try {
             int continua;
             do{

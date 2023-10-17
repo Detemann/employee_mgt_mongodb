@@ -21,15 +21,18 @@ public class Menu {
     private DepartamentoController departamentoController;
     private DeletarRegistros deletarRegistros;
 
+    private AtualizarRegistro atualizarRegistro;
+
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
         this.departamentoController = new DepartamentoController(conexao);
         this.deletarRegistros = new DeletarRegistros(conexao);
+        this.atualizarRegistro = new AtualizarRegistro(conexao);
     }
 
-    public void inicializacao() throws IOException {
+    public void inicializacao() throws IOException, InterruptedException {
         int quant_funcionario = 0;
         int quant_departamento = 0;
         quant_funcionario = this.menuController.contarFuncionarios();
@@ -56,7 +59,8 @@ public class Menu {
         menuPrincipal();
     }
 
-    public void menuPrincipal() throws IOException {
+    public void menuPrincipal() throws IOException, InterruptedException {
+        clearScreen();
         Integer op = null;
 
         do {
@@ -87,7 +91,7 @@ public class Menu {
                     break;
                 case 4:
                     //atualizar registros
-                    System.out.println("Atualizar Registros");
+                    atualizarRegistro.atualizarRegistro();
                     break;
                 case 5:
                     System.out.println("\n\n\n FIM DO PROGRAMA!");
@@ -100,6 +104,7 @@ public class Menu {
     }
 
     public void relatorios() throws IOException {
+        clearScreen();
         System.out.println("[1] Relatório 1 - Consulta o numero de funcionarios em cada Departamento\n" +
                 "[2] Relatorio 2 - Consulta cada Funcionario e seu respectivo Departamento\n" +
                 "[3] Relatorio 3 - Consulta cada Departamento e o nome do seu respectivo Chefe\n" +
@@ -178,7 +183,7 @@ public class Menu {
 
     //meu METODO
     private void inserirRegistros() {
-
+        clearScreen();
         System.out.println("========================= INSERIR REGISTROS =========================");
         System.out.println("Selecione a tabela que deseja inserir novo Registro");
         System.out.println("   [ 1 ] Funcionarios\n   [ 2 ] Departamentos");
@@ -450,5 +455,9 @@ public class Menu {
                 sair = true;
             }
         }
+    }
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
