@@ -51,4 +51,7 @@ public class DepartamentoController {
         return this.departamentoService.removeFuncionariosdoDepartamento(departamento);
     }
 
+    public boolean atualizaDepartamento(Departamento departamento) {
+        return this.departamentoService.atualizaDepartamento(departamento);
+    }
 }

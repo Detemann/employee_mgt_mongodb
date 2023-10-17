@@ -44,7 +44,7 @@ public class FuncionarioService {
                 return true;
             }
         }catch (Exception e) {
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }
@@ -151,7 +151,7 @@ public class FuncionarioService {
             }
 
         }catch (Exception e) {
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }
@@ -191,7 +191,24 @@ public class FuncionarioService {
             }
 
         }catch (Exception e) {
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean atualizaFuncionario(Funcionario funcionario) {
+        try {
+            String idDepartamento = funcionario.getDepartamento() != null ? funcionario.getDepartamento().getIdDepartamento().toString() : "NULL";
+            String sql = "UPDATE FUNCIONARIO f\n"+
+                    "SET NOME= '"+funcionario.getNome()+"', CPF= '"+funcionario.getCpf()+"', EMAIL= '"+funcionario.getEmail()+"', " +
+                    "SALARIO_BRUTO= "+funcionario.getSalarioBruto()+", SALARIO_LIQUIDO= "+funcionario.getSalarioLiquido()+", " +
+                    "ID_DEPARTAMENTO= "+ idDepartamento +
+                    "WHERE f.ID_FUNCIONARIO = " + funcionario.getIdFuncionario();
+
+            int resultado = this.databaseServices.fazerUpdate(sql);
+            return resultado != 0;
+        } catch (Exception e) {
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }

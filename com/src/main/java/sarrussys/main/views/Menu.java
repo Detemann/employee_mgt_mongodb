@@ -21,12 +21,15 @@ public class Menu {
     private DepartamentoController departamentoController;
     private DeletarRegistros deletarRegistros;
 
+    private AtualizarRegistro atualizarRegistro;
+
     public Menu(OracleDataSource conexao){
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
         this.departamentoController = new DepartamentoController(conexao);
         this.deletarRegistros = new DeletarRegistros(conexao);
+        this.atualizarRegistro = new AtualizarRegistro(conexao);
     }
 
     public void inicializacao() throws IOException {
@@ -87,7 +90,7 @@ public class Menu {
                     break;
                 case 4:
                     //atualizar registros
-                    System.out.println("Atualizar Registros");
+                    atualizarRegistro.atualizarRegistro();
                     break;
                 case 5:
                     System.out.println("\n\n\n FIM DO PROGRAMA!");

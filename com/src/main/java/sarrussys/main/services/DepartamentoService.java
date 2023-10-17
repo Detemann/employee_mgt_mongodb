@@ -41,7 +41,7 @@ public class DepartamentoService {
             }
 
         }catch (Exception e){
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }
@@ -150,7 +150,7 @@ public class DepartamentoService {
             }
 
         }catch (Exception e) {
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }
@@ -190,7 +190,22 @@ public class DepartamentoService {
             }
 
         }catch (Exception e) {
-            System.out.println("[MenuService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean atualizaDepartamento(Departamento departamento) {
+        try {
+            String idChefe = departamento.getChefeDepartamento() != null ? departamento.getChefeDepartamento().getIdFuncionario().toString() : "NULL";
+            String sql = "UPDATE DEPARTAMENTO d\n" +
+                    "SET NOME= '"+departamento.getNomeDepartamento()+"', SIGLA= '"+departamento.getSigla()+"', ID_CHEFE= "+ idChefe +
+                    "WHERE d.ID_DEPARTAMENTO = " + departamento.getIdDepartamento();
+
+            int resultado = this.databaseServices.fazerUpdate(sql);
+            return resultado != 0;
+        } catch (Exception e) {
+            System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }

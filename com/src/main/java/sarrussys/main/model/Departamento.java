@@ -51,8 +51,11 @@ public class Departamento {
     }
 
     public Funcionario getChefeDepartamento() {
-
-        return chefeDepartamento;
+        if(this.chefeDepartamento == null){
+            return null;
+        } else {
+            return this.chefeDepartamento;
+        }
     }
 
     public void setChefeDepartamento(Funcionario chefeDepartamento) {

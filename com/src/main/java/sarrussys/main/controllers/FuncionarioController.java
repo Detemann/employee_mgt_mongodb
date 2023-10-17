@@ -45,4 +45,8 @@ public class FuncionarioController {
     public boolean removeDepartamentodoFuncionario(Funcionario funcionario) {
         return this.funcionarioService.removeDepartamentodoFuncionario(funcionario);
     }
+
+    public boolean atualizaFuncionario(Funcionario funcionario) {
+        return this.funcionarioService.atualizaFuncionario(funcionario);
+    }
 }
