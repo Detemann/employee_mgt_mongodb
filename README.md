@@ -57,7 +57,7 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
                 resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
                 resultado.add(consulta.getString("NOME_CHEFE"));
             }
-            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
+            if(!resultado.isEmpty()){
                 return resultado;
             }else{
                 return null;
@@ -75,6 +75,13 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 <br>
 
 ## :pushpin: Demonstração da Aplicação:
+  [![Video_Demonstracao: Video](https://img.shields.io/badge/-YouTube-red?style=flat-square&logo=Youtube&logoColor=white)](linkdovideocompleto)
+  * [Video completo]()
+  * [Inserir Registros]()
+  * [Remover Registros]()
+  * [Atualizar Registros]()
+ 
+
 
 ## :pushpin: Contatos:
 
