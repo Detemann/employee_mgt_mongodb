@@ -58,21 +58,21 @@ public class AtualizarRegistro {
                 Funcionario funcionario = funcionarioController.pesquisaFuncionarioID(num);
                 do {
                     System.out.println("Deseja modificar qual atributo: " +
-                            "\n[1] Nome\n[2]CPF\n[3]Email\n[4]Salario Bruto\n[5]Salario Liquido\n[6]Departamento\n[0]Voltar ao menu");
+                            "\n[1] Nome\n[2]CPF\n[3]Email\n[4]Salario Bruto\n[5]Salario Liquido\n[6]Departamento\n[0]Salvar e voltar ao menu");
                     num = sc.nextInt();
 
                     quebra = false;
                     auxiliar = "";
                     switch (num) {
                         case 1:
+                            sc.nextLine();
                             System.out.println("Digite o nome: ");
                             auxiliar = sc.nextLine();
-                            if (!auxiliar.isEmpty() && auxiliar.matches("^[a-zA-Z\\\\s]+$")) {
+                            if (!auxiliar.isEmpty() && auxiliar.matches("^[a-zA-Z\\s]+$")) {
                                 funcionario.setNome(auxiliar);
                             } else {
-                                System.out.println("Nome inválido");
+                                System.out.println("\nNome inválido\n");
                             }
-                            sc.nextLine();
                             break;
                         case 2:
                             System.out.println("Informe o CPF do funcionario: ");
@@ -83,7 +83,6 @@ public class AtualizarRegistro {
                                 auxiliar.replaceAll("[.-]", "");
                                 funcionario.setCpf(auxiliar);
                             }
-                            sc.nextLine();
                             break;
                         case 3:
                             System.out.println("Informe o e-mail: ");
@@ -105,7 +104,7 @@ public class AtualizarRegistro {
                             funcionario.setSalarioLiquido(salarioLiquido);
                             break;
                         case 6:
-                            mostraObjeto(1);
+                            mostraObjeto(2);
                             System.out.println("Digite ID do departamento: ");
                             num = sc.nextInt();
                             funcionario.setDepartamento(departamentoController.pesquisaDepartamentoID(num));
@@ -122,21 +121,21 @@ public class AtualizarRegistro {
             case 2:
                 Departamento departamento = departamentoController.pesquisaDepartamentoID(num);
                 do {
-                    System.out.println("Deseja modificar qual atributo: \n[1] Nome\n[2]Sigla\n[3]Chefe\n[0]Voltar ao menu");
+                    System.out.println("Deseja modificar qual atributo: \n[1] Nome\n[2]Sigla\n[3]Chefe\n[0]Salvar e voltar ao menu");
                     num = sc.nextInt();
 
                     quebra = false;
                     auxiliar = "";
                     switch (num) {
                         case 1:
+                            sc.nextLine();
                             System.out.println("Digite o nome: ");
                             auxiliar = sc.nextLine();
-                            if(!auxiliar.isEmpty() && auxiliar.matches("^[a-zA-Z\\\\s]+$")) {
+                            if(!auxiliar.isEmpty() && auxiliar.matches("^[a-zA-Z\\s]+$")) {
                                 departamento.setNomeDepartamento(auxiliar);
                             } else {
                                 System.out.println("Nome inválido");
                             }
-                            sc.nextLine();
                             break;
                         case 2:
                             System.out.println("Digite a sigla: ");
@@ -148,7 +147,7 @@ public class AtualizarRegistro {
                             }
                             break;
                         case 3:
-                            mostraObjeto(2);
+                            mostraObjeto(1);
                             System.out.println("Digite ID do funcionário: ");
                             num = sc.nextInt();
                             departamento.setChefeDepartamento(funcionarioController.pesquisaFuncionarioID(num));
@@ -179,13 +178,15 @@ public class AtualizarRegistro {
         switch (type) {
             case 1:
                 List<Funcionario> funcionarios = funcionarioController.mostrarFuncionarios();
+                System.out.println("=================== FUNCIONARIOS ===================");
                 for (Funcionario funcionario: funcionarios) {
-                    System.out.println("=================== FUNCIONARIOS ===================");
                     System.out.println("ID: " + funcionario.getIdFuncionario() + "\nNome: " + funcionario.getNome() +
-                            "\nCPF: " + funcionario.getCpf());
+                            "\nCPF: " + funcionario.getCpf() + "\nEMAIL: "+ funcionario.getEmail()+"\nSalario Bruto: " + funcionario.getSalarioBruto() +
+                            "\nSalario Liquido: " + funcionario.getSalarioLiquido());
                     String nomeDepartamento;
                     if(funcionario.getDepartamento() != null) {
                         nomeDepartamento = funcionario.getDepartamento().getSigla();
+                        nomeDepartamento += "\nID Departamento: "+funcionario.getDepartamento().getIdDepartamento();
                     } else {
                         nomeDepartamento = "Sem departamento";
                     }
@@ -195,8 +196,8 @@ public class AtualizarRegistro {
                 break;
             case 2:
                 List<Departamento> departamentos = departamentoController.mostraDepartamentos();
+                System.out.println("=================== DEPARTAMENTOS ===================");
                 for (Departamento departamento: departamentos) {
-                    System.out.println("=================== DEPARTAMENTOS ===================");
                     System.out.println("ID: " + departamento.getIdDepartamento() + "\nNome: " + departamento.getNomeDepartamento() +
                             "\nSigla: " + departamento.getSigla());
                     String nomeChefe;
