@@ -163,7 +163,13 @@ public class AtualizarRegistro {
                             departamento.setChefeDepartamento(funcionarioController.pesquisaFuncionarioID(num));
                             break;
                         case 0:
-                            departamentoController.atualizaDepartamento(departamento);
+                            if(departamentoController.atualizaDepartamento(departamento)) {
+                                System.out.println("\nOperação bem-sucedida\n");
+                                Thread.sleep(1000);
+                            } else {
+                                System.out.println("\nErro na operação\n");
+                                Thread.sleep(1000);
+                            }
                             break;
                         default:
                             System.out.println("Opção inválida");
