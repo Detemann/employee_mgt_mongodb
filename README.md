@@ -38,7 +38,7 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 
 
 ## :pushpin: Organização do Projeto:
-- [Diagrams](xxxxxxx): Nesse diretório está o [diagrama relacional](xxxxxxxxxxxxx) (lógico) do sistema.
+- [Diagrams](DiagramaRelacional): Nesse diretório está o [diagrama relacional](DiagramaRelacional/DiagramaRelacional.pdf) (lógico) do sistema.
 - [sql](com/src/main/resources/sql): Nesse diretório estão os scripts para criação das tabelas e inserção de dados fictícios para testes do sistema.
   * Certifique-se de que o usuário do banco possui todos os privilégios antes de executar os scripts de criação, caso ocorra erro, execute o comando a seguir com o superusuário via SQL Developer: `GRANT ALL PRIVILEGES TO LABDATABASE;`
   * [CreateTables.sql](com/src/main/resources/sql/CreateTables.sql): script responsável pela criação das tabelas.
