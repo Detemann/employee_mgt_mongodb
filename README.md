@@ -80,13 +80,15 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 
 Assista a demonstrações em vídeo da aplicação para entender seu funcionamento. Clique nos links abaixo para acessar os vídeos:
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Video_Completo-red?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/watch?v=uj2s4CWyqoA&ab_channel=Wandersontr)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Video_Completo-red?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/watch?v=JYDa-CZDsbU&ab_channel=Wandersontr)
+
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Relatorios-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/JYDa-CZDsbU?t=81)
   
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Inserir_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=52)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Inserir_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/JYDa-CZDsbU?t=117)
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Remover_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=123)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Remover_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/JYDa-CZDsbU?t=223)
 
-- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Atualizar_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/uj2s4CWyqoA?t=142)
+- [![Video_Demonstracao: Video](https://img.shields.io/badge/-Atualizar_Registros-red?style=flat-square&logo=Youtube&logoColor=white)](https://youtu.be/JYDa-CZDsbU?t=243)
 
 
 ## :pushpin: Executando a Aplicação
