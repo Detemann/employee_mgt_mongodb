@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Properties;
 
 public class ConexaoDB {
-    private final static String DB_url = "jdbc:oracle:thin:@//localhost:1521/XEPDB1";
+    private final static String DB_url = "jdbc:oracle:thin:@//localhost:1521/xe";
 
-    private final static String DB_user = "system";
+    private final static String DB_user = "labdatabase";
 
-    private final static String DB_password = "senha123";
+    private final static String DB_password = "labDatabase2022";
 
     private final static String defaultSchema = "ANONYMOUS";
 
