@@ -20,7 +20,7 @@ public class AtualizarRegistro {
         this.departamentoController = new DepartamentoController(dataSource);
         this.funcionarioController = new FuncionarioController(dataSource);
     }
-    public void atualizarRegistro() {
+    public void atualizarRegistro() throws InterruptedException {
         int op;
         boolean aa = true;
         do {
@@ -47,7 +47,7 @@ public class AtualizarRegistro {
         } while(op != 0);
     }
 
-    public void AtualizarObjeto(int type) {
+    public void AtualizarObjeto(int type) throws InterruptedException {
         System.out.println("Digite o id que deseja modificar: ");
         int num = sc.nextInt();
 
@@ -110,10 +110,17 @@ public class AtualizarRegistro {
                             funcionario.setDepartamento(departamentoController.pesquisaDepartamentoID(num));
                             break;
                         case 0:
-                            funcionarioController.atualizaFuncionario(funcionario);
+                            if(funcionarioController.atualizaFuncionario(funcionario)) {
+                                System.out.println("\nOperação bem-sucedida\n");
+                                Thread.sleep(1000);
+                            } else {
+                                System.out.println("\nErro na operação\n");
+                                Thread.sleep(1000);
+                            }
                             break;
                         default:
                             System.out.println("Opção inválida");
+                            Thread.sleep(1000);
                             break;
                     }
                 } while (num != 0);

@@ -32,7 +32,7 @@ public class Menu {
         this.atualizarRegistro = new AtualizarRegistro(conexao);
     }
 
-    public void inicializacao() throws IOException {
+    public void inicializacao() throws IOException, InterruptedException {
         int quant_funcionario = 0;
         int quant_departamento = 0;
         quant_funcionario = this.menuController.contarFuncionarios();
@@ -59,7 +59,8 @@ public class Menu {
         menuPrincipal();
     }
 
-    public void menuPrincipal() throws IOException {
+    public void menuPrincipal() throws IOException, InterruptedException {
+        clearScreen();
         Integer op = null;
 
         do {
@@ -453,5 +454,10 @@ public class Menu {
                 sair = true;
             }
         }
+    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
