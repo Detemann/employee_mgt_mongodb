@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="com:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/com_jar</output-path>
-    <root id="archive" name="com.jar">
+  <artifact type="jar" name="SistemaGerenciamento">
+    <output-path>$PROJECT_DIR$/out/artifacts/SistemaGerenciamento</output-path>
+    <root id="archive" name="SistemaGerenciamento.jar">
       <element id="module-output" name="com" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/oracle/database/jdbc/ojdbc11/21.11.0.0/ojdbc11-21.11.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.5.13/mybatis-3.5.13.jar" path-in-jar="/" />

@@ -31,12 +31,12 @@ public class AtualizarRegistro {
                 case 1:
                     mostraObjeto(op);
                     AtualizarObjeto(op);
-                    op = 0; //quebra loop
+                    op = 0;
                 break;
                 case 2:
                     mostraObjeto(op);
                     AtualizarObjeto(op);
-                    op = 0; //quebra loop
+                    op = 0;
                 break;
                 case 0:
                     break;

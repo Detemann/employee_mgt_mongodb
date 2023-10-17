@@ -59,12 +59,13 @@ public class ConexaoDB {
         try (Connection connection = dataSource.getConnection()) {
             connection.setSchema(defaultSchema);
             ScriptRunner runSql = new ScriptRunner(connection);
-            Reader reader = new BufferedReader(new FileReader("com/src/main/resources/sql/" + fileName));
+            Reader reader = new BufferedReader(new FileReader("C:\\Users\\Detemann\\Documents\\Projetos\\employee_manegement\\com\\src\\main\\resources\\sql\\" + fileName));
             runSql.setLogWriter(null);
             runSql.setErrorLogWriter(null);
             runSql.runScript(reader);
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
