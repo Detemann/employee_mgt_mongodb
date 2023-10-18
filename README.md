@@ -2,9 +2,6 @@
 <P align="center"> DISCIPLINA DE BANCO DE DADOS 2023/2 </P>
 <P align="center"> PROFESSOR HOWARD ROATTI </P>
 
-<h4 align="center">    
- :construction:  Projeto em construção  :construction:
-</h4>
 
 ## Índice 
 * [Descrição do Projeto](#pushpin-descrição-do-projeto)
