@@ -1,4 +1,4 @@
-package sarrussys.main.controllers;
+/*package sarrussys.main.controllers;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Funcionario;
@@ -50,3 +50,4 @@ public class FuncionarioController {
         return this.funcionarioService.atualizaFuncionario(funcionario);
     }
 }
+*/

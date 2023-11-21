@@ -1,9 +1,8 @@
-package sarrussys.main.services;
+/*package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
-import sarrussys.main.repository.DatabaseServices;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -214,3 +213,4 @@ public class FuncionarioService {
         }
     }
 }
+*/

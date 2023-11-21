@@ -1,5 +1,6 @@
-package sarrussys.main.views;
+/*package sarrussys.main.views;
 
+import com.mongodb.client.MongoDatabase;
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
@@ -23,7 +24,7 @@ public class Menu {
 
     private AtualizarRegistro atualizarRegistro;
 
-    public Menu(OracleDataSource conexao){
+    public Menu(MongoDatabase conexao){
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
@@ -461,3 +462,4 @@ public class Menu {
         System.out.flush();
     }
 }
+*/

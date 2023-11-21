@@ -1,4 +1,4 @@
-package sarrussys.main.views;
+/*package sarrussys.main.views;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
@@ -190,7 +190,7 @@ public class AtualizarRegistro {
      * @param type int
      * @description 1 é igual a Funcionario e 2 é igual a Departamento
      */
-    public void mostraObjeto (int type) {
+ /*   public void mostraObjeto (int type) {
         clearScreen();
         switch (type) {
             case 1:
@@ -230,3 +230,4 @@ public class AtualizarRegistro {
         }
     }
 }
+*/

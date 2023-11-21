@@ -1,5 +1,6 @@
-package sarrussys.main.controllers;
+/*package sarrussys.main.controllers;
 
+import com.mongodb.client.MongoDatabase;
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
@@ -11,7 +12,7 @@ import java.util.List;
 public class MenuController {
     RelatorioServices relatorioServices;
 
-    public MenuController(OracleDataSource conexao){
+    public MenuController(MongoDatabase conexao){
         this.relatorioServices = new RelatorioServices(conexao);
     }
 
@@ -48,3 +49,4 @@ public class MenuController {
 
 
 }
+*/

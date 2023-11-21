@@ -1,9 +1,12 @@
-package sarrussys.main.services;
+/*package sarrussys.main.services;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import oracle.jdbc.pool.OracleDataSource;
+import org.bson.Document;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
-import sarrussys.main.repository.DatabaseServices;
+import sarrussys.main.repository.DepartamentoRepository;
 
 
 import java.sql.ResultSet;
@@ -12,32 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RelatorioServices {
-    private DatabaseServices databaseServices;
+    private DepartamentoRepository departamentoRepository;
 
     //construtor
-    public RelatorioServices(OracleDataSource conexao){
-        this.databaseServices = new DatabaseServices(conexao);
+    public RelatorioServices(MongoDatabase conexao){
+        this.departamentoRepository = new DepartamentoRepository(conexao);
     }
 
     //relatorio que retorna cada departamento e o numero de funcionarios respectavamente
     public List<String> relatorioDepartamentoNumFuncionarios(){
         List<String> resultado = new ArrayList<>();
         try {
-            ResultSet consulta = this.databaseServices.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, COUNT(FUNCIONARIO.ID_FUNCIONARIO) AS Numero_Funcionarios\n" +
-                    "FROM DEPARTAMENTO\n" +
-                    "LEFT JOIN FUNCIONARIO ON DEPARTAMENTO.ID_DEPARTAMENTO = FUNCIONARIO.ID_DEPARTAMENTO\n" +
-                    "GROUP BY DEPARTAMENTO.NOME");
-            while(consulta.next()) {
-                resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
-                resultado.add(consulta.getString("NUMERO_FUNCIONARIOS"));
-            }
-            if(!resultado.isEmpty()){ //se estiver cheia retorna a lista se não, retorna null
-                return resultado;
-            }else{
-                //Nenhum registro encontrado!
-                return null;
-            }
-        }catch (SQLException e) {
+            List<MongoCollection<Document>> docs = departamentoRepository.NumFuncionariosDepartamento();
+
+        }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
         }
@@ -183,3 +174,4 @@ public class RelatorioServices {
     }
 
 }
+*/
