@@ -43,7 +43,7 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
   * [AlterTabela.sql](com/src/main/resources/sql/AlterTable.sql): script responsável pela criação dos relacionamentos.
   * [InsertData.sql](com/src/main/resources/sql/InsertData.sql): script responsável pela inserção dos registros fictícios para testes do sistema.
 - [main](com/src/main/java/sarrussys/main): Nesse diretório estão os scripts do sistema:
-  * [Conexão](com/src/main/java/sarrussys/main/database/ConexaoDB.java): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoDB.java) de conexão com o banco de dados Oracle.
+  * [Conexão](com/src/main/java/sarrussys/main/database/ConexaoOracle.java): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoOracle.java) de conexão com o banco de dados Oracle.
     - Exemplo de utilização para consultas simples:<br>
       ```Java
        public List<String> relatorioDepartamentoChefe(){

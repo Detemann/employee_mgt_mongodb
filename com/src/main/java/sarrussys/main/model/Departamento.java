@@ -6,6 +6,8 @@ public class Departamento {
     private String sigla;
     private Funcionario chefeDepartamento;
 
+    private String nomeChefe;
+
     public Departamento(Integer idDepartamento, String nomeDepartamento, String sigla, Funcionario chefeDepartamento) {
         this.idDepartamento = idDepartamento;
         this.nomeDepartamento = nomeDepartamento;
@@ -60,5 +62,13 @@ public class Departamento {
 
     public void setChefeDepartamento(Funcionario chefeDepartamento) {
         this.chefeDepartamento = chefeDepartamento;
+    }
+
+    public String getNomeChefe() {
+        return nomeChefe;
+    }
+
+    public void setNomeChefe(String nomeChefe) {
+        this.nomeChefe = nomeChefe;
     }
 }

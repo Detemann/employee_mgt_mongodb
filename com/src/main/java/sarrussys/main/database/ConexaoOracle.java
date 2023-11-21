@@ -2,17 +2,12 @@ package sarrussys.main.database;
 
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.pool.OracleDataSource;
-import org.apache.ibatis.jdbc.ScriptRunner;
-import sarrussys.main.services.DatabaseServices;
+import sarrussys.main.repository.DatabaseServices;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.Reader;
-import java.sql.*;
 import java.util.List;
 import java.util.Properties;
 
-public class ConexaoDB {
+public class ConexaoOracle {
     private final static String DB_url = "jdbc:oracle:thin:@//localhost:1521/xe";
 
     private final static String DB_user = "labdatabase";
@@ -47,7 +42,7 @@ public class ConexaoDB {
         oracleDataSource.setConnectionProperties(properties);
 
         setDataSource(oracleDataSource);
-        if(initializeTables()) System.out.println("[ConexaoDB] Databse Setup: OK \n");
+        if(initializeTables()) System.out.println("[ConexaoOracle] Databse Setup: OK \n");
     }
 
     private Boolean initializeTables() {
@@ -75,7 +70,7 @@ public class ConexaoDB {
             }
             return true;
         } catch (Exception e) {
-            System.out.println("[ConexaoDB - initializeTables] Databse Setup: FAIL" +
+            System.out.println("[ConexaoOracle - initializeTables] Databse Setup: FAIL" +
                     "\n"+e.getMessage());
             return false;
         }

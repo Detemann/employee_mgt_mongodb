@@ -10,6 +10,8 @@ public class Funcionario {
     private Double salarioLiquido;
     private Departamento departamento;
 
+    private String nomeDepartamento;
+
     public Funcionario(Integer idFuncionario, String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, Departamento departamento) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
@@ -95,6 +97,14 @@ public class Funcionario {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public String getNomeDepartamento() {
+        return nomeDepartamento;
+    }
+
+    public void setNomeDepartamento(String nomeDepartamento) {
+        this.nomeDepartamento = nomeDepartamento;
     }
 
     @Override
