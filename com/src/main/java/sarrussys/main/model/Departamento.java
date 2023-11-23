@@ -5,14 +5,16 @@ public class Departamento {
     private String nomeDepartamento;
     private String sigla;
     private Funcionario chefeDepartamento;
-
     private String nomeChefe;
 
-    public Departamento(Integer idDepartamento, String nomeDepartamento, String sigla, Funcionario chefeDepartamento) {
+    private Integer numFuncionarios;
+
+    public Departamento(Integer idDepartamento, String nomeDepartamento, String sigla, Funcionario chefeDepartamento, Integer numFuncionarios) {
         this.idDepartamento = idDepartamento;
         this.nomeDepartamento = nomeDepartamento;
         this.sigla = sigla;
         this.chefeDepartamento = chefeDepartamento;
+        this.numFuncionarios = numFuncionarios;
     }
 
     public Departamento() {
@@ -70,5 +72,23 @@ public class Departamento {
 
     public void setNomeChefe(String nomeChefe) {
         this.nomeChefe = nomeChefe;
+    }
+
+    @Override
+    public String toString() {
+        return "Departamento{" +
+                "idFuncionario=" + idDepartamento +
+                ", nome='" + nomeDepartamento + '\'' +
+                ", sigla='"+ sigla + '\'' +
+                ", nomeChefe='"+ nomeChefe + '\'' +
+                '}';
+    }
+
+    public Integer getNumFuncionarios() {
+        return numFuncionarios;
+    }
+
+    public void setNumFuncionarios(Integer numFuncionarios) {
+        this.numFuncionarios = numFuncionarios;
     }
 }

@@ -1,8 +1,7 @@
-/*package sarrussys.main.controllers;
+package sarrussys.main.controllers;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
-import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.DepartamentoService;
 
 
@@ -55,4 +54,3 @@ public class DepartamentoController {
         return this.departamentoService.atualizaDepartamento(departamento);
     }
 }
-*/

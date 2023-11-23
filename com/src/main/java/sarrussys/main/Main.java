@@ -6,6 +6,8 @@ import org.bson.Document;
 import org.bson.json.JsonObject;
 import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.repository.DepartamentoRepository;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,19 +21,11 @@ public class Main {
 
         try {
             conexaoMongoDB.init();
-            DepartamentoRepository departamentoRepository = new DepartamentoRepository(conexaoMongoDB.getMongoDatabase());
-            List<MongoCollection<Document>> docs = departamentoRepository.NumFuncionariosDepartamento();
-            MongoCursor<Document> cursor = docs.stream().filter(document -> document.getNamespace().toString().equals("employees.employee"))
-                    .findFirst().get().find(eq("nome", "Tecnologia")).iterator();
-
-            while (cursor.hasNext()) {
-                System.out.println(cursor.next().toJson());
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*Menu menu = new Menu(conexaoMongoDB);
-        menu.inicializacao();*/
+        Menu menu = new Menu(conexaoMongoDB);
+        menu.inicializacao();
     }
 
 

@@ -15,11 +15,11 @@ public class ConexaoMongoDB {
 
     public void init() {
         try {
-
             MongoClient mongoClient = MongoClients.create(DB_url);
             setDatabse(mongoClient);
+            System.out.println("[ConexaoMongoDB] Connection status: OK");
         } catch (Exception e) {
-
+            System.out.println("[ConexaoMongoDB] Connection status: FAIL");
         }
     }
 

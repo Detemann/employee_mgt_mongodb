@@ -1,4 +1,4 @@
-/*package sarrussys.main.services;
+package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
@@ -213,4 +213,3 @@ public class FuncionarioService {
         }
     }
 }
-*/

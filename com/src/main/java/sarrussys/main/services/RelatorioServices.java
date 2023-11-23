@@ -1,12 +1,15 @@
-/*package sarrussys.main.services;
+package sarrussys.main.services;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import oracle.jdbc.pool.OracleDataSource;
 import org.bson.Document;
+import org.bson.json.JsonObject;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.repository.DepartamentoRepository;
+import sarrussys.main.repository.FuncionarioRepository;
 
 
 import java.sql.ResultSet;
@@ -16,18 +19,33 @@ import java.util.List;
 
 public class RelatorioServices {
     private DepartamentoRepository departamentoRepository;
+    private FuncionarioRepository funcionarioRepository;
 
     //construtor
-    public RelatorioServices(MongoDatabase conexao){
+    public RelatorioServices(ConexaoMongoDB conexao){
         this.departamentoRepository = new DepartamentoRepository(conexao);
+        this.funcionarioRepository = new FuncionarioRepository(conexao);
     }
 
     //relatorio que retorna cada departamento e o numero de funcionarios respectavamente
     public List<String> relatorioDepartamentoNumFuncionarios(){
-        List<String> resultado = new ArrayList<>();
         try {
-            List<MongoCollection<Document>> docs = departamentoRepository.NumFuncionariosDepartamento();
+            List<String> stringList = new ArrayList<>();
+            List<Departamento> departamentos = departamentoRepository.buscarDepartamento();
+            List<Funcionario> funcionarios = funcionarioRepository.buscarFuncionarios();
 
+            for (Departamento departamento : departamentos) {
+                int count = 0;
+                for (Funcionario funcionario: funcionarios) {
+                    if (funcionario.getNomeDepartamento().equalsIgnoreCase(departamento.getNomeDepartamento())) {
+                        count++;
+                    }
+                }
+                stringList.add(departamento.getNomeDepartamento());
+                stringList.add(String.valueOf(count));
+            }
+
+            return stringList;
         }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
@@ -39,20 +57,8 @@ public class RelatorioServices {
         List<String> resultado = new ArrayList<>();
 
         try {
-            ResultSet consulta = this.databaseServices.fazerConsulta("SELECT FUNCIONARIO.NOME AS Nome_Funcionario, DEPARTAMENTO.NOME AS Nome_Departamento\n" +
-                    "FROM FUNCIONARIO\n" +
-                    "LEFT JOIN DEPARTAMENTO ON FUNCIONARIO.ID_DEPARTAMENTO = DEPARTAMENTO.ID_DEPARTAMENTO");
-            while(consulta.next()) {
-                resultado.add(consulta.getString("NOME_FUNCIONARIO"));
-                resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
-            }
-            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
-                return resultado;
-            }else{
-                //Nenhum registro encontrado!
-                return null;
-            }
-        }catch (SQLException e) {
+            return null;
+        }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
         }
@@ -174,4 +180,3 @@ public class RelatorioServices {
     }
 
 }
-*/

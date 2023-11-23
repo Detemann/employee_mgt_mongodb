@@ -1,26 +1,22 @@
-/*package sarrussys.main.controllers;
+package sarrussys.main.controllers;
 
-import com.mongodb.client.MongoDatabase;
-import oracle.jdbc.pool.OracleDataSource;
-import sarrussys.main.model.Departamento;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.RelatorioServices;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuController {
     RelatorioServices relatorioServices;
 
-    public MenuController(MongoDatabase conexao){
+    public MenuController(ConexaoMongoDB conexao){
         this.relatorioServices = new RelatorioServices(conexao);
     }
 
 
     //relatorios INICIO
     public List<String> relatorioDepartamentoNumFuncionariosController(){
-        List<String> resultado = relatorioServices.relatorioDepartamentoNumFuncionarios();
-        return resultado;
+        return relatorioServices.relatorioDepartamentoNumFuncionarios();
     }
 
     public List<String> relatorioFuncionarioDepartamentoController(){
@@ -49,4 +45,3 @@ public class MenuController {
 
 
 }
-*/

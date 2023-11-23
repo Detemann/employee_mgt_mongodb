@@ -1,4 +1,4 @@
-/*package sarrussys.main.services;
+package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.model.Departamento;
@@ -62,12 +62,12 @@ public class DepartamentoService {
 
                 if(idChfe != null){
                     Funcionario chefe = this.relatorioServices.pesquisaFuncionarioIdRelatorioService(idChfe);
-                    departamento = new Departamento(id, nome, sigla, chefe);
+                    departamento = new Departamento(id, nome, sigla, chefe, numFuncionarios);
                     resultado.add(departamento);
                 }else{
                     // Se não há ID de chefe, crie um funcionário vazio
                     Funcionario chefe = new Funcionario(null,null,null,null,null,null);
-                    departamento = new Departamento(id, nome, sigla, chefe);
+                    departamento = new Departamento(id, nome, sigla, chefe, numFuncionarios);
                     resultado.add(departamento);
                 }
             }
@@ -210,4 +210,3 @@ public class DepartamentoService {
         }
     }
 }
-*/
