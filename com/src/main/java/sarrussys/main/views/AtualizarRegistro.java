@@ -3,6 +3,7 @@ package sarrussys.main.views;
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 
@@ -17,7 +18,7 @@ public class AtualizarRegistro {
     private FuncionarioController funcionarioController;
     private Scanner sc;
 
-    public AtualizarRegistro (OracleDataSource dataSource) {
+    public AtualizarRegistro (ConexaoMongoDB dataSource) {
         this.sc = new Scanner(System.in);
         this.departamentoController = new DepartamentoController(dataSource);
         this.funcionarioController = new FuncionarioController(dataSource);

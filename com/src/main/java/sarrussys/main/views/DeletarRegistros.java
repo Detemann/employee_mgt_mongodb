@@ -3,6 +3,7 @@ package sarrussys.main.views;
 import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 
@@ -18,7 +19,7 @@ public class DeletarRegistros {
     private FuncionarioController funcionarioController;
 
 
-    public DeletarRegistros(OracleDataSource conexao){
+    public DeletarRegistros(ConexaoMongoDB conexao){
         this.sc = new Scanner(System.in);
         this.departamentoController = new DepartamentoController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);

@@ -1,10 +1,9 @@
 package sarrussys.main.views;
 
-import com.mongodb.client.MongoDatabase;
-import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
 import sarrussys.main.controllers.MenuController;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 
@@ -24,7 +23,7 @@ public class Menu {
 
     private AtualizarRegistro atualizarRegistro;
 
-    public Menu(MongoDatabase conexao){
+    public Menu(ConexaoMongoDB conexao) {
         this.sc = new Scanner(System.in);
         this.menuController = new MenuController(conexao);
         this.funcionarioController = new FuncionarioController(conexao);
@@ -132,21 +131,18 @@ public class Menu {
                 }
                 break;
             case 2:
-                resultado = this.menuController.relatorioFuncionarioDepartamentoController();
-                if(resultado == null){
+                List<Funcionario> funcionarios = this.menuController.relatorioFuncionarioDepartamentoController();
+                if(funcionarios.isEmpty()){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
-                }else {
+                } else {
                     System.out.println("\n========== DEPARTAMENTO DE CADA FUNCIONARIO ==========");
-                    for (int i = 0; i < resultado.size(); i += 2) {
-                        String nome = resultado.get(i);
-                        String departamento = resultado.get(i + 1);
-
-                        System.out.println("Nome: " + nome);
-                        if (departamento == null) {
-                            System.out.println("Departamento: sem departamento");
+                    for (Funcionario funcionario : funcionarios) {
+                        System.out.println("Nome:"+ funcionario.getNome());
+                        if (funcionario.getNomeDepartamento().isEmpty()) {
+                            System.out.println("Departamento: Sem departamento");
                         } else {
-                            System.out.println("Departamento: " + departamento);
+                            System.out.println("Departamento: " + funcionario.getNomeDepartamento());
                         }
                     }
                     sair();

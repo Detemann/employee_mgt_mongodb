@@ -1,6 +1,6 @@
 package sarrussys.main.controllers;
 
-import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.FuncionarioService;
 
@@ -10,7 +10,7 @@ import java.util.List;
 public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
-    public FuncionarioController(OracleDataSource conexao){
+    public FuncionarioController(ConexaoMongoDB conexao){
         this.funcionarioService = new FuncionarioService(conexao);
     }
 

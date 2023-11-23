@@ -1,8 +1,10 @@
 package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
+import sarrussys.main.repository.FuncionarioRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioService {
-    private DatabaseServices databaseServices;
+    private FuncionarioRepository databaseServices;
     private RelatorioServices relatorioServices;
 
-    public FuncionarioService(OracleDataSource conexao){
-        this.databaseServices = new DatabaseServices(conexao);
+    public FuncionarioService(ConexaoMongoDB conexao){
+        this.databaseServices = new FuncionarioRepository(conexao);
         this.relatorioServices = new RelatorioServices(conexao);
     }
 

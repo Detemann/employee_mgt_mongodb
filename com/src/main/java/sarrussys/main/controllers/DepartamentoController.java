@@ -1,6 +1,8 @@
 package sarrussys.main.controllers;
 
+import com.mongodb.client.MongoDatabase;
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.services.DepartamentoService;
 
@@ -11,7 +13,7 @@ import java.util.List;
 public class DepartamentoController {
     private DepartamentoService departamentoService;
 
-    public DepartamentoController(OracleDataSource conexao){
+    public DepartamentoController(ConexaoMongoDB conexao){
         this.departamentoService = new DepartamentoService(conexao);
     }
 

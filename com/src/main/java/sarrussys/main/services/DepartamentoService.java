@@ -1,8 +1,10 @@
 package sarrussys.main.services;
 
 import oracle.jdbc.pool.OracleDataSource;
+import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
+import sarrussys.main.repository.DepartamentoRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,15 +13,14 @@ import java.util.List;
 
 
 public class DepartamentoService {
-    private DatabaseServices databaseServices;
+    private DepartamentoRepository databaseServices;
     private RelatorioServices relatorioServices;
 
-    public DepartamentoService(OracleDataSource conexao){
-        this.databaseServices = new DatabaseServices(conexao);
+    public DepartamentoService(ConexaoMongoDB conexao){
+        this.databaseServices = new DepartamentoRepository(conexao);
         this.relatorioServices = new RelatorioServices(conexao);
     }
 
-    //iMPLEMENTAR INSERIR DEPARTAMENTO
     public boolean cadastrarDepartamento(Departamento novoDepartamento){
         try{
             String nome = novoDepartamento.getNomeDepartamento();

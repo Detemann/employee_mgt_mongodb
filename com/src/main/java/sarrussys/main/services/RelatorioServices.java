@@ -29,8 +29,8 @@ public class RelatorioServices {
 
     //relatorio que retorna cada departamento e o numero de funcionarios respectavamente
     public List<String> relatorioDepartamentoNumFuncionarios(){
+        List<String> resultado = new ArrayList<>();
         try {
-            List<String> stringList = new ArrayList<>();
             List<Departamento> departamentos = departamentoRepository.buscarDepartamento();
             List<Funcionario> funcionarios = funcionarioRepository.buscarFuncionarios();
 
@@ -41,11 +41,11 @@ public class RelatorioServices {
                         count++;
                     }
                 }
-                stringList.add(departamento.getNomeDepartamento());
-                stringList.add(String.valueOf(count));
+                resultado.add(departamento.getNomeDepartamento());
+                resultado.add(String.valueOf(count));
             }
 
-            return stringList;
+            return resultado;
         }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
@@ -53,11 +53,9 @@ public class RelatorioServices {
     }
 
     //relatorio que retorna os funcionarios e seu respectivo departamento
-    public List<String> relatorioFuncionarioDepartamento(){
-        List<String> resultado = new ArrayList<>();
-
+    public List<Funcionario> relatorioFuncionarioDepartamento(){
         try {
-            return null;
+            return funcionarioRepository.buscarFuncionarios();
         }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;

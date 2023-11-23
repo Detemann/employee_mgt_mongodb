@@ -5,25 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/ConexaoMongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/ConexaoMongoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/model/Departamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/model/Departamento.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/repository/DepartamentoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/repository/DepartamentoRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +37,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2YYF1Dd28mGieFJXBQlFyeTuvzX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "mongodb",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/Detemann/Documents/Projetos/employee_mgt_mongodb/com/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
