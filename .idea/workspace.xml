@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/util/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/ConexaoMongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/ConexaoMongoDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/model/Departamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/model/Departamento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/target/classes/sarrussys/main/repository/DepartamentoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/com/target/classes/sarrussys/main/repository/DepartamentoRepository.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2YYF1Dd28mGieFJXBQlFyeTuvzX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "mongodb",
+    "last_opened_file_path": "C:/Users/Detemann/Documents/Projetos/employee_mgt_mongodb/com/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="sarrussys.main.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="" />
+      <created>1700694388460</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700694388460</updated>
+      <workItem from="1700694389635" duration="12273000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="departamentos" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
