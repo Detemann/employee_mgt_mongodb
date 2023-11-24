@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +73,8 @@
       <updated>1700694388460</updated>
       <workItem from="1700694389635" duration="12273000" />
       <workItem from="1700778389027" duration="218000" />
-      <workItem from="1700778640517" duration="11942000" />
+      <workItem from="1700778640517" duration="12466000" />
+      <workItem from="1700857208364" duration="4129000" />
     </task>
     <servers />
   </component>

@@ -43,7 +43,7 @@ public class FuncionarioRepository {
                 .getCollection("employee")
                 .find(eq("_id", id)).cursor()) {
 
-            return (Funcionario) utils.populate(funcionarios, utils.fabricate(1, Funcionario.class));
+            return (Funcionario) utils.populate(funcionarios, utils.fabricate(1, Funcionario.class)).get(0);
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] "+e.getMessage());
             return null;
@@ -55,7 +55,7 @@ public class FuncionarioRepository {
         try {
             MongoCollection<Document> collection = database.getMongoDatabase().getDatabase("employees").getCollection("employee");
 
-            InsertOneResult result = collection.insertOne(new Document()
+            collection.insertOne(new Document()
                     .append("_id", ran.nextInt(9999))
                     .append("nome", funcionario.getNome())
                     .append("cpf", funcionario.getCpf())
@@ -63,7 +63,6 @@ public class FuncionarioRepository {
                     .append("salario_bruto", funcionario.getSalarioBruto())
                     .append("salario_liquido", funcionario.getSalarioLiquido())
                     .append("nome_departamento", funcionario.getNomeDepartamento()));
-
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -99,7 +98,7 @@ public class FuncionarioRepository {
         try {
             collection = database.getMongoDatabase().getDatabase("employees").getCollection("employee");
 
-            DeleteResult result = collection.deleteOne(eq("id_", funcionario.getIdFuncionario()));
+            DeleteResult result = collection.deleteOne(eq("_id", funcionario.getIdFuncionario()));
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] "+e.getMessage());
         }

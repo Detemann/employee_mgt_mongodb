@@ -49,7 +49,7 @@ public class DepartamentoRepository {
                 .getCollection("departaments")
                 .find(eq("_id", id)).cursor()) {
 
-            return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class));
+            return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class)).get(0);
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] " + e.getMessage());
             return null;
@@ -72,9 +72,9 @@ public class DepartamentoRepository {
         try {
             collection = database.getMongoDatabase().getDatabase("employees").getCollection("departaments");
 
-            Random ran = new Random();
-            InsertOneResult result = collection.insertOne(new Document()
-                    .append("_id", ran.nextInt())
+            int id = new Random().nextInt(9999);
+            collection.insertOne(new Document()
+                    .append("_id", id)
                     .append("nome", novoDepartamento.getNomeDepartamento())
                     .append("sigla", novoDepartamento.getSigla())
                     .append("nome_chefe", novoDepartamento.getNomeChefe())
@@ -89,9 +89,10 @@ public class DepartamentoRepository {
         try {
             collection = database.getMongoDatabase().getDatabase("employees").getCollection("departaments");
 
-            DeleteResult result = collection.deleteOne(eq("id_", departamento.getIdDepartamento()));
+            collection.deleteOne(eq("id_", departamento.getIdDepartamento()));
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

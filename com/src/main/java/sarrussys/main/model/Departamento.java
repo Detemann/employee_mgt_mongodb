@@ -5,7 +5,6 @@ public class Departamento {
     private String nomeDepartamento;
     private String sigla;
     private String nomeChefe;
-
     private Integer numFuncionarios;
 
     public Departamento(Integer idDepartamento, String nomeDepartamento, String sigla, Integer numFuncionarios) {
@@ -21,10 +20,10 @@ public class Departamento {
         this.sigla = null;
     }
 
-    public Departamento(String nome, String sigla, Funcionario funcionario) {
+    public Departamento(String nome, String sigla, String nomeFuncionario) {
         this.nomeDepartamento = nome;
         this.sigla = sigla;
-
+        this.nomeChefe = nomeFuncionario;
     }
 
     public Integer getIdDepartamento() {

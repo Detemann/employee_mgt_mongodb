@@ -411,6 +411,7 @@ public class Menu {
                                 System.out.println("Funcionario não localizado, insira um ID valido!");
                             }
                         }while (funcionario == null);
+
                     }
                     op = '.';
                     break;
@@ -427,7 +428,7 @@ public class Menu {
             }
         }while (op != '.');
 
-        Departamento departamentoNovo = new Departamento(nome, sigla, funcionario);
+        Departamento departamentoNovo = new Departamento(nome, sigla, funcionario.getNome());
 
         return departamentoNovo;
     }
