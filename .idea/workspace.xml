@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/Executavel/SistemaGerenciamento.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,7 @@
       <workItem from="1700778389027" duration="218000" />
       <workItem from="1700778640517" duration="12466000" />
       <workItem from="1700857208364" duration="4319000" />
-      <workItem from="1700862190995" duration="2169000" />
+      <workItem from="1700862190995" duration="3257000" />
     </task>
     <servers />
   </component>
@@ -86,11 +86,6 @@
           <url>file://$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java</url>
           <line>214</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
