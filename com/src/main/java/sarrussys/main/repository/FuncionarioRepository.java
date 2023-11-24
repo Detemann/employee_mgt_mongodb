@@ -5,11 +5,9 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.InsertOneResult;
-import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import sarrussys.main.database.ConexaoMongoDB;
-import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.util.Utils;
 

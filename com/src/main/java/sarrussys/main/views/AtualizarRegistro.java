@@ -1,6 +1,5 @@
 package sarrussys.main.views;
 
-import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
 import sarrussys.main.database.ConexaoMongoDB;
@@ -9,7 +8,6 @@ import sarrussys.main.model.Funcionario;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import static sarrussys.main.views.Menu.clearScreen;
 

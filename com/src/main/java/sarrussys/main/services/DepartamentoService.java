@@ -4,8 +4,6 @@ import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.repository.DepartamentoRepository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 

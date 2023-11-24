@@ -1,11 +1,9 @@
 package sarrussys.main.controllers;
 
 import sarrussys.main.database.ConexaoMongoDB;
-import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.FuncionarioService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioController {

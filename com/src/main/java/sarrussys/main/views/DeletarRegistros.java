@@ -1,6 +1,5 @@
 package sarrussys.main.views;
 
-import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.controllers.DepartamentoController;
 import sarrussys.main.controllers.FuncionarioController;
 import sarrussys.main.database.ConexaoMongoDB;

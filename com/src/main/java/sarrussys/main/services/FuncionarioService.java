@@ -5,7 +5,6 @@ import sarrussys.main.model.Funcionario;
 import sarrussys.main.repository.FuncionarioRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;

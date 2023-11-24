@@ -7,12 +7,11 @@ import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Menu {
     private Scanner sc;

@@ -28,18 +28,9 @@ public class MenuController {
     }
 
     public int contarFuncionarios(){
-        int resultado = this.relatorioServices.contarFuncionariosServices();
-        return resultado;
+        return this.relatorioServices.contarFuncionariosServices();
     }
     public int contarDepartamentos(){
-        int resultado = this.relatorioServices.contarDepartamentosService();
-        return resultado;
+        return this.relatorioServices.contarDepartamentosService();
     }
-
-    //relatorios FIM
-    public Funcionario pesquisaFuncionarioIdRelatorioService(Integer id){
-        return this.relatorioServices.pesquisaFuncionarioIdRelatorioService(id);
-    }
-
-
 }
