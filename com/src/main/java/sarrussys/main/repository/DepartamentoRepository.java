@@ -61,7 +61,7 @@ public class DepartamentoRepository {
                 .getCollection("departaments")
                 .find(eq("nome", nome)).cursor()) {
 
-            return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class));
+            return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class)).get(0);
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] " + e.getMessage());
             return null;
@@ -89,7 +89,7 @@ public class DepartamentoRepository {
         try {
             collection = database.getMongoDatabase().getDatabase("employees").getCollection("departaments");
 
-            collection.deleteOne(eq("id_", departamento.getIdDepartamento()));
+            collection.deleteOne(eq("_id", departamento.getIdDepartamento()));
         } catch (Exception e) {
             System.out.println("[DepartamentoRepository] " + e.getMessage());
             e.printStackTrace();

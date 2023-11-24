@@ -147,7 +147,7 @@ public class AtualizarRegistro {
                             sc.nextLine();
                             System.out.println("Digite o nome: ");
                             auxiliar = sc.nextLine();
-                            if(!auxiliar.isEmpty() && auxiliar.matches("^[a-zA-Z\\s]+$")) {
+                            if(!auxiliar.isEmpty() && auxiliar.matches("^[A-Za-z\\s\\W]+$")) {
                                 departamento.setNomeDepartamento(auxiliar);
                             } else {
                                 System.out.println("Nome inválido");
