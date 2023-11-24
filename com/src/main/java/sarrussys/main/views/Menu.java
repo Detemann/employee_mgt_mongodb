@@ -150,7 +150,7 @@ public class Menu {
                 break;
             case 3:
                 resultado = this.menuController.relatorioDepartamentoChefeController();
-                if(resultado == null){
+                if(resultado.isEmpty()){
                     System.out.println(">>> Nenhum registro encontrado!!");
                     sair();
                 }else {

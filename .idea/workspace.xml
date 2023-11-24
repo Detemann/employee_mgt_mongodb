@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/SqlQuerys.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/AtualizarRegistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/DeletarRegistros.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/views/Menu.java" afterDir="false" />
     </list>
@@ -81,7 +77,7 @@
       <updated>1700694388460</updated>
       <workItem from="1700694389635" duration="12273000" />
       <workItem from="1700778389027" duration="218000" />
-      <workItem from="1700778640517" duration="7793000" />
+      <workItem from="1700778640517" duration="11586000" />
     </task>
     <servers />
   </component>

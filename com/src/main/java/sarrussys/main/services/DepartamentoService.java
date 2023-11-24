@@ -43,6 +43,7 @@ public class DepartamentoService {
             return departamentoRepository.buscarDepartamentoPorNome(nome);
         } catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
         }
     }
 
@@ -55,27 +56,6 @@ public class DepartamentoService {
         return null;
     }
 
-
-    public boolean departamentoExiste(Integer idDepartamento) {
-        int quantidadeExistente = 0;
-        try{
-            String sql = "SELECT COUNT(*) AS CONTAGEM\n" +
-                    "FROM DEPARTAMENTO\n" +
-                    "WHERE ID_DEPARTAMENTO = '"+idDepartamento+"'";
-
-            ResultSet consulta = this.databaseServices.fazerConsulta(sql);
-            if(consulta.next()){
-                quantidadeExistente = consulta.getInt("CONTAGEM");
-            }
-        }catch (SQLException e) {
-            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
-        }
-        if(quantidadeExistente != 0){
-            return true;
-        }
-        return false;
-    }
-
     public boolean deletarDepartamento(Departamento departamento) {
         try {
             departamentoRepository.delete(departamento);
@@ -85,25 +65,11 @@ public class DepartamentoService {
             return false;
         }
     }
-
-    public boolean removeFuncionariosdoDepartamento(Departamento departamento) {
-        try {
-
-        }catch (Exception e) {
-            System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
-            return false;
-        }
-    }
     
     public boolean atualizaDepartamento(Departamento departamento) {
         try {
-            String idChefe = departamento.getChefeDepartamento() != null ? departamento.getChefeDepartamento().getIdFuncionario().toString() : "NULL";
-            String sql = "UPDATE DEPARTAMENTO d\n" +
-                    "SET NOME= '"+departamento.getNomeDepartamento()+"', SIGLA= '"+departamento.getSigla()+"', ID_CHEFE= "+ idChefe +
-                    "WHERE d.ID_DEPARTAMENTO = " + departamento.getIdDepartamento();
-
-            int resultado = this.databaseServices.fazerUpdate(sql);
-            return resultado != 0;
+            departamentoRepository.update(departamento);
+            return true;
         } catch (Exception e) {
             System.out.println("[DepartamentoServices] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;

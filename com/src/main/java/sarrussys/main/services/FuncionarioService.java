@@ -1,23 +1,17 @@
 package sarrussys.main.services;
 
-import oracle.jdbc.pool.OracleDataSource;
 import sarrussys.main.database.ConexaoMongoDB;
-import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.repository.FuncionarioRepository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
-    private RelatorioServices relatorioServices;
 
     public FuncionarioService(ConexaoMongoDB conexao){
         this.funcionarioRepository = new FuncionarioRepository(conexao);
-        this.relatorioServices = new RelatorioServices(conexao);
     }
 
 
@@ -32,32 +26,29 @@ public class FuncionarioService {
         }
     }
 
-    public boolean funcionaroExisteService(String cpf) {
-        int quantidadeExistente = 0;
+    public Boolean funcionaroExisteService(String cpf) {
         try{
-
-        }catch (SQLException e) {
+            return funcionarioRepository.buscarFuncionarios().stream()
+                    .anyMatch(funcionario -> funcionario.getCpf().equalsIgnoreCase(cpf));
+        }catch (Exception e) {
             System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
         }
     }
 
     public Funcionario pesquisaFuncionarioID(Integer id){
-        Funcionario funcionario = new Funcionario();
-
         try{
-
-        }catch (SQLException e){
+            return funcionarioRepository.buscarFuncionarioPorId(id);
+        }catch (Exception e){
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
         }
         return null;
     }
 
     public List<Funcionario> mostrarFuncionarios(){
-        List<Funcionario> resultado = new ArrayList<>();
-
         try {
-
-        }catch (SQLException e){
+            return funcionarioRepository.buscarFuncionarios();
+        }catch (Exception e){
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
         }
@@ -65,58 +56,51 @@ public class FuncionarioService {
 
     public boolean deletarFuncionario(Funcionario funcionario){
         try {
-
+            funcionarioRepository.delete(funcionario);
+            return true;
         }catch (Exception e) {
             System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
         }
     }
 
-    public boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
-        int relacionamentos = 0;
+    public Boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
         try{
-
-        }catch (SQLException e) {
+            return funcionarioRepository.buscarFuncionarioPorId(idFuncionario) != null;
+        }catch (Exception e) {
             System.out.println("[FuncionarioService] Ocorreu um erro inesperado: \n"+e.getMessage());
+            return null;
         }
-
-        if(relacionamentos != 0){
-            return true;
-        }
-        return false;
     }
 
     public boolean removeDepartamentodoFuncionario(Funcionario funcionario) {
         try {
-            String sql = "UPDATE DEPARTAMENTO\n" +
-                    "SET ID_CHEFE = NULL\n" +
-                    "WHERE ID_CHEFE ="+funcionario.getIdFuncionario();
-
-            int resultado = this.databaseServices.fazerUpdate(sql);
-
-            if(resultado == 0){
-                return false;
-            }else {
-                return true;
-            }
-
+            funcionarioRepository.update(funcionario);
+            return true;
         }catch (Exception e) {
             System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;
+        }
+    }
+
+    public Boolean removeFuncionariosdoDepartamento(String nomeDepartamento) {
+        try {
+            List<Funcionario> funcionarios = funcionarioRepository.buscarFuncionarios();
+            funcionarios.stream()
+                    .filter(funcionario -> funcionario.getNomeDepartamento().equalsIgnoreCase(nomeDepartamento))
+                    .forEach(funcionario -> funcionario.setNomeDepartamento(""));
+            funcionarioRepository.updateOnMass(funcionarios);
+            return true;
+        } catch (Exception e) {
+            System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+            return null;
         }
     }
     
     public boolean atualizaFuncionario(Funcionario funcionario) {
         try {
-            String idDepartamento = funcionario.getDepartamento() != null ? funcionario.getDepartamento().getIdDepartamento().toString() : "NULL";
-            String sql = "UPDATE FUNCIONARIO f\n"+
-                    "SET NOME= '"+funcionario.getNome()+"', CPF= '"+funcionario.getCpf()+"', EMAIL= '"+funcionario.getEmail()+"', " +
-                    "SALARIO_BRUTO= "+funcionario.getSalarioBruto()+", SALARIO_LIQUIDO= "+funcionario.getSalarioLiquido()+", " +
-                    "ID_DEPARTAMENTO= "+ idDepartamento +
-                    "WHERE f.ID_FUNCIONARIO = " + funcionario.getIdFuncionario();
-
-            int resultado = this.databaseServices.fazerUpdate(sql);
-            return resultado != 0;
+            funcionarioRepository.update(funcionario);
+            return true;
         } catch (Exception e) {
             System.out.println("[FuncionarioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return false;

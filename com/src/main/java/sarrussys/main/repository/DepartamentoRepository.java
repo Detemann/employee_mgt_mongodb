@@ -3,9 +3,11 @@ package sarrussys.main.repository;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import sarrussys.main.database.ConexaoMongoDB;
 import sarrussys.main.model.Departamento;
 import sarrussys.main.util.Utils;
@@ -32,7 +34,7 @@ public class DepartamentoRepository {
         try {
             collection = database.getMongoDatabase().getDatabase("employees").getCollection("departaments");
 
-            List<Departamento> departamentoList = (List<Departamento>) utils.fabricate((int)collection.countDocuments(), Departamento.class);
+            List<Departamento> departamentoList = (List<Departamento>) utils.fabricate((int) collection.countDocuments(), Departamento.class);
             departamentoList = (List<Departamento>) utils.populate(collection.find().cursor(), departamentoList);
 
             return departamentoList;
@@ -49,7 +51,7 @@ public class DepartamentoRepository {
 
             return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class));
         } catch (Exception e) {
-            System.out.println("[DepartamentoRepository] "+e.getMessage());
+            System.out.println("[DepartamentoRepository] " + e.getMessage());
             return null;
         }
     }
@@ -61,7 +63,7 @@ public class DepartamentoRepository {
 
             return (Departamento) utils.populate(departamentos, utils.fabricate(1, Departamento.class));
         } catch (Exception e) {
-            System.out.println("[DepartamentoRepository] "+e.getMessage());
+            System.out.println("[DepartamentoRepository] " + e.getMessage());
             return null;
         }
     }
@@ -79,7 +81,7 @@ public class DepartamentoRepository {
             );
 
         } catch (MongoException e) {
-            System.out.println("[DepartamentoRepository] "+e.getMessage());
+            System.out.println("[DepartamentoRepository] " + e.getMessage());
         }
     }
 
@@ -89,8 +91,28 @@ public class DepartamentoRepository {
 
             DeleteResult result = collection.deleteOne(eq("id_", departamento.getIdDepartamento()));
         } catch (Exception e) {
-            System.out.println("[DepartamentoRepository] "+e.getMessage());
+            System.out.println("[DepartamentoRepository] " + e.getMessage());
         }
     }
 
+    public void updateOnMass(List<Departamento> departamentos) {
+        departamentos.forEach(this::update);
+    }
+
+    public void update(Departamento departamento) {
+        try {
+            collection = database.getMongoDatabase().getDatabase("employees").getCollection("departaments");
+
+            Document query = new Document().append("_id", departamento.getIdDepartamento());
+
+            Bson updates = Updates.combine(
+                    Updates.set("nome", departamento.getNomeDepartamento()),
+                    Updates.set("sigla", departamento.getSigla()),
+                    Updates.set("nome_chefe", departamento.getNomeChefe())
+            );
+            collection.updateOne(query, updates);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

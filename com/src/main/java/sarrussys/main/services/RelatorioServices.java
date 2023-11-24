@@ -65,22 +65,16 @@ public class RelatorioServices {
     //relatorio que retorna os departamentos e o seu respectivo chefe
     public List<String> relatorioDepartamentoChefe(){
         List<String> resultado = new ArrayList<>();
-
         try {
-            ResultSet consulta = this.databaseServices.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, FUNCIONARIO.NOME AS Nome_Chefe\n" +
-                    "FROM DEPARTAMENTO\n" +
-                    "LEFT JOIN FUNCIONARIO ON DEPARTAMENTO.ID_CHEFE = FUNCIONARIO.ID_FUNCIONARIO");
-            while(consulta.next()) {
-                resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
-                resultado.add(consulta.getString("NOME_CHEFE"));
+            List<Departamento> departamentos = departamentoRepository.buscarDepartamentos();
+
+            for (Departamento departamento : departamentos) {
+                resultado.add(departamento.getNomeDepartamento());
+                resultado.add(departamento.getNomeChefe());
             }
-            if(!resultado.isEmpty()){//se estiver cheia retorna a lista se não, retorna null
-                return resultado;
-            }else{
-                //Nenhum registro encontrado!
-                return null;
-            }
-        }catch (SQLException e) {
+
+            return resultado;
+        }catch (Exception e) {
             System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
             return null;
         }

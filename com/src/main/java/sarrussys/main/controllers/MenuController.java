@@ -24,8 +24,7 @@ public class MenuController {
     }
 
     public List<String> relatorioDepartamentoChefeController(){
-        List<String> resultado = relatorioServices.relatorioDepartamentoChefe();
-        return resultado;
+        return relatorioServices.relatorioDepartamentoChefe();
     }
 
     public int contarFuncionarios(){

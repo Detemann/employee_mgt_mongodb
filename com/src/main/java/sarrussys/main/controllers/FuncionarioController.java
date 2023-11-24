@@ -15,13 +15,11 @@ public class FuncionarioController {
         this.funcionarioService = new FuncionarioService(conexao);
     }
 
-
-
     public boolean cadastrarFuncionarioController(Funcionario novoFuncionario){
         return funcionarioService.cadastrarFuncionarioService(novoFuncionario);
     }
 
-    public boolean funcionarioExisteController(String cpf){
+    public Boolean funcionarioExisteController(String cpf){
         return this.funcionarioService.funcionaroExisteService(cpf);
     }
 
@@ -29,17 +27,15 @@ public class FuncionarioController {
         return this.funcionarioService.pesquisaFuncionarioID(id);
     }
 
-    public List<Funcionario> mostrarFuncionarios(){
-        List<Funcionario> resultado = new ArrayList<>();
-        resultado = this.funcionarioService.mostrarFuncionarios();
-        return resultado;
+    public List<Funcionario> mostrarFuncionarios() {
+        return this.funcionarioService.mostrarFuncionarios();
     }
 
     public boolean deletarFuncionario(Funcionario funcionario){
         return this.funcionarioService.deletarFuncionario(funcionario);
     }
 
-    public boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
+    public Boolean verificaRelacionamentFuncionarioxDepartamento(Integer idFuncionario) {
         return this.funcionarioService.verificaRelacionamentFuncionarioxDepartamento(idFuncionario);
     }
 
@@ -53,5 +49,9 @@ public class FuncionarioController {
 
     public Boolean verificaRelacionamentoDepartamentoxFuncionario(String nomeDepartamento){
         return this.funcionarioService.verificaRelacionamentoDepartamentoxFuncionario(nomeDepartamento);
+    }
+
+    public Boolean removeFuncionariosdoDepartamento(String nomeDepartamento) {
+        return this.funcionarioService.removeFuncionariosdoDepartamento(nomeDepartamento);
     }
 }

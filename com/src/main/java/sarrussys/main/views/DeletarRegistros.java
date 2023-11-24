@@ -110,7 +110,7 @@ public class DeletarRegistros {
 
                     if(op2 == 1){ //excluindo departamento com associacao
                         //se a remocao dos funcionarios desse departamento foi bem sucedida
-                        if(departamentoController.removeFuncionariosdoDepartamento(departamento)){
+                        if(funcionarioController.removeFuncionariosdoDepartamento(departamento.getNomeDepartamento())){
                             //verifica se o departamento foi deletado corretamente
                             if(departamentoController.deletarDepartamento(departamento)){
                                 return true; //departamento excluido com sucesso
@@ -155,10 +155,10 @@ public class DeletarRegistros {
                 String cpf = resultado.get(i).getCpf();
 
                 String nomeDepartamento;
-                if (resultado.get(i).getDepartamento() == null) {
+                if (resultado.get(i).getNomeDepartamento().isEmpty()) {
                     nomeDepartamento = "sem departamento";
                 } else {
-                    nomeDepartamento = resultado.get(i).getDepartamento().getNomeDepartamento();
+                    nomeDepartamento = resultado.get(i).getNomeDepartamento();
                 }
 
                 System.out.println("" +
@@ -213,11 +213,7 @@ public class DeletarRegistros {
                         return false;
                     }
                 }else { //bloco que deleta direto o funcionario pois nao existe nenhum departamento iniserido nele
-                    if(funcionarioController.deletarFuncionario(funcionario)){
-                        return true;
-                    }else {
-                        return false;
-                    }
+                    return funcionarioController.deletarFuncionario(funcionario);
                 }
             }else {
                 System.out.println("\n>>> Operação Cancelada");
