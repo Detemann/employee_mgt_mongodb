@@ -53,7 +53,7 @@ public class DeletarRegistros {
         }
     }
 
-    private boolean deletarDepartamento() throws IOException {
+    private boolean deletarDepartamento() throws Exception {
         List<Departamento> resultado = this.departamentoController.mostraDepartamentos();
 
         if (resultado == null) {
@@ -69,10 +69,10 @@ public class DeletarRegistros {
                 String nomeDepartamento = resultado.get(i).getNomeDepartamento();
 
                 String nomeChefe;
-                if(resultado.get(i).getChefeDepartamento() == null){
+                if(resultado.get(i).getNomeChefe().isEmpty()){
                     nomeChefe = "sem chefe";
                 }else{
-                    nomeChefe = resultado.get(i).getChefeDepartamento().getNome();
+                    nomeChefe = resultado.get(i).getNomeChefe();
                 }
 
                 System.out.println("" +
@@ -103,7 +103,7 @@ public class DeletarRegistros {
 
             if(op == 1){
                 //se o departamento está associado a algum Funcionario ele vai informar
-                if(departamentoController.verificaRelacionamentoDepartamentoxFuncionario(departamento.getIdDepartamento())){
+                if(funcionarioController.verificaRelacionamentoDepartamentoxFuncionario(departamento.getNomeDepartamento())){
                     System.out.println("\n\n>>> O Departamento escolhido está associado a um Funcionário");
                     System.out.println("Deseja excluir realmente?\n[ 1 ] Sim\n[ 2 ] Cancelar");
                     int op2 = sc.nextInt();
@@ -127,11 +127,7 @@ public class DeletarRegistros {
                         return false;
                     }
                 }else { //bloco que deleta direto o departamento pois nao existe nenhum funcionario iniserido nele
-                    if(departamentoController.deletarDepartamento(departamento)){
-                        return true;
-                    }else {
-                        return false;
-                    }
+                    return departamentoController.deletarDepartamento(departamento);
                 }
             }else {
                 System.out.println("\n>>> Operação Cancelada");

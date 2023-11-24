@@ -31,7 +31,7 @@ public class RelatorioServices {
     public List<String> relatorioDepartamentoNumFuncionarios(){
         List<String> resultado = new ArrayList<>();
         try {
-            List<Departamento> departamentos = departamentoRepository.buscarDepartamento();
+            List<Departamento> departamentos = departamentoRepository.buscarDepartamentos();
             List<Funcionario> funcionarios = funcionarioRepository.buscarFuncionarios();
 
             for (Departamento departamento : departamentos) {

@@ -8,27 +8,25 @@ public class Funcionario {
     private String email;
     private Double salarioBruto;
     private Double salarioLiquido;
-    private Departamento departamento;
 
     private String nomeDepartamento;
 
-    public Funcionario(Integer idFuncionario, String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, Departamento departamento) {
+    public Funcionario(Integer idFuncionario, String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.salarioBruto = salarioBruto;
         this.salarioLiquido = salarioLiquido;
-        this.departamento = departamento;
     }
 
-    public Funcionario(String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, Departamento departamento) {
+    public Funcionario(String nome, String cpf, String email, Double salarioBruto, Double salarioLiquido, String nomeDepartamento) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.salarioBruto = salarioBruto;
         this.salarioLiquido = salarioLiquido;
-        this.departamento = departamento;
+        this.nomeDepartamento = nomeDepartamento;
     }
 
     public Funcionario() {
@@ -38,7 +36,6 @@ public class Funcionario {
         this.email = null;
         this.salarioBruto = null;
         this.salarioLiquido = null;
-        this.departamento = null;
     }
 
 
@@ -89,14 +86,6 @@ public class Funcionario {
 
     public void setSalarioLiquido(Double salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
     }
 
     public String getNomeDepartamento() {

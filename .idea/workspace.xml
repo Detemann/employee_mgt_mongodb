@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf6ad6fe-84f5-447c-950c-129be3aacf66" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/DepartamentoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/FuncionarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/database/SqlQuerys.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Departamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/model/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/repository/DepartamentoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/DepartamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/FuncionarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/src/main/java/sarrussys/main/services/RelatorioServices.java" afterDir="false" />
@@ -45,21 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Detemann/Documents/Projetos/employee_mgt_mongodb/com/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Detemann/Documents/Projetos/employee_mgt_mongodb/com/pom.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
@@ -79,6 +80,8 @@
       <option name="presentableId" value="Default" />
       <updated>1700694388460</updated>
       <workItem from="1700694389635" duration="12273000" />
+      <workItem from="1700778389027" duration="218000" />
+      <workItem from="1700778640517" duration="7793000" />
     </task>
     <servers />
   </component>

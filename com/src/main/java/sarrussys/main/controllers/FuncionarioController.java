@@ -1,6 +1,7 @@
 package sarrussys.main.controllers;
 
 import sarrussys.main.database.ConexaoMongoDB;
+import sarrussys.main.model.Departamento;
 import sarrussys.main.model.Funcionario;
 import sarrussys.main.services.FuncionarioService;
 
@@ -48,5 +49,9 @@ public class FuncionarioController {
 
     public boolean atualizaFuncionario(Funcionario funcionario) {
         return this.funcionarioService.atualizaFuncionario(funcionario);
+    }
+
+    public Boolean verificaRelacionamentoDepartamentoxFuncionario(String nomeDepartamento){
+        return this.funcionarioService.verificaRelacionamentoDepartamentoxFuncionario(nomeDepartamento);
     }
 }

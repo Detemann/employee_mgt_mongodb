@@ -198,19 +198,17 @@ public class Menu {
 
                         if(novoFuncionario == null){
                             System.out.println("\n\n>>> Funcionário já cadastrado!");
-                        }else{
-                            if(funcionarioController.cadastrarFuncionarioController(novoFuncionario)){
+                        }else {
+                            if (funcionarioController.cadastrarFuncionarioController(novoFuncionario)) {
                                 System.out.println("\n\n>>> Funcionário Inserido com Sucesso!");
-                                System.out.println("Nome: "+novoFuncionario.getNome());
-                                System.out.println("CPF: "+novoFuncionario.getCpf());
-                                //SE EXISTIR UM DEPARTAMENTO NO FUNCIONARIO ELE MOSTRA
-                                if(novoFuncionario.getDepartamento() != null){
-                                    System.out.println("Departamento: "+novoFuncionario.getDepartamento().getNomeDepartamento());
-                                }else{
-                                    System.out.println("Departamento: sem departamento");
+                                System.out.println("Nome: " + novoFuncionario.getNome());
+                                System.out.println("CPF: " + novoFuncionario.getCpf());
+                                if(!novoFuncionario.getNomeDepartamento().isEmpty()) {
+                                    System.out.println("Departamento: "+ novoFuncionario.getNomeDepartamento());
+                                } else {
+                                    System.out.println("Departamento: Sem departamento");
                                 }
                             }
-
                         }
                         break;
                         //Inserir novo DEPARTAMENTO
@@ -225,8 +223,8 @@ public class Menu {
                                 System.out.println("Sigla: "+novoDepartamento.getSigla());
 
                                 //SE EXISTIR UM CHEFE NO DEPARTAMENTO ELE MOSTRA
-                                if(novoDepartamento.getChefeDepartamento() != null){
-                                    System.out.println("Departamento: "+novoDepartamento.getChefeDepartamento().getNome());
+                                if(!novoDepartamento.getNomeChefe().isEmpty()){
+                                    System.out.println("Departamento: "+novoDepartamento.getNomeChefe());
                                 }else{
                                     System.out.println("Departamento: sem chefe");
                                 }
@@ -254,13 +252,9 @@ public class Menu {
 
             }while(op != 0);
 
-        }catch(java.util.InputMismatchException e){
-            System.out.println("Opção inválida. Por favor, insira um número válido.");
-            this.sc.next();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
@@ -323,10 +317,10 @@ public class Menu {
                             String nomeDepartamento = resultado.get(i).getNomeDepartamento();
                             String siglaDepartamento = resultado.get(i).getSigla();
                             String nomeChefe;
-                            if(resultado.get(i).getChefeDepartamento() == null){
+                            if(resultado.get(i).getNomeChefe().isEmpty()){
                                 nomeChefe = "sem chefe";
                             }else{
-                                nomeChefe = resultado.get(i).getChefeDepartamento().getNome();
+                                nomeChefe = resultado.get(i).getNomeChefe();
                             }
 
                             System.out.println("" +
@@ -347,11 +341,9 @@ public class Menu {
                     op = '.';
                     break;
                 case '2':
-                    departamento = null;
                     op = '.';
                     break;
                 case '.': //case que acabou
-
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -360,7 +352,7 @@ public class Menu {
         }while (op != '.');
 
 
-        Funcionario funcionarioNovo = new Funcionario(nome, cpf, email, salarioBruto, salarioLiquido, departamento);
+        Funcionario funcionarioNovo = new Funcionario(nome, cpf, email, salarioBruto, salarioLiquido, departamento.getNomeDepartamento());
 
         //se o funcionario existir
         if (this.funcionarioController.funcionarioExisteController(funcionarioNovo.getCpf())) {
@@ -400,10 +392,10 @@ public class Menu {
                             String cpf = resultado.get(i).getCpf();
 
                             String nomeDepartamento;
-                            if(resultado.get(i).getDepartamento() == null){
+                            if(resultado.get(i).getNomeDepartamento().isEmpty()){
                                 nomeDepartamento = "sem departamento";
                             }else{
-                                nomeDepartamento = resultado.get(i).getDepartamento().getNomeDepartamento();
+                                nomeDepartamento = resultado.get(i).getNomeDepartamento();
                             }
 
                             System.out.println("" +

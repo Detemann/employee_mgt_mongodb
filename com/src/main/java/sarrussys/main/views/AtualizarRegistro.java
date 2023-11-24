@@ -111,10 +111,17 @@ public class AtualizarRegistro {
                             mostraObjeto(2);
                             System.out.println("Digite ID do departamento: ");
                             num = sc.nextInt();
-                            funcionario.setDepartamento(departamentoController.pesquisaDepartamentoID(num));
+                            funcionario.setNomeDepartamento(departamentoController.pesquisaDepartamentoID(num).getNomeDepartamento());
                             break;
                         case 0:
                             if(funcionarioController.atualizaFuncionario(funcionario)) {
+                                System.out.println("Departamento: " +
+                                        "\n Nome: "+ funcionario.getNome() +
+                                        "\n Cpf: "+ funcionario.getCpf() +
+                                        "\n Email: "+ funcionario.getEmail() +
+                                        "\n Salario bruto: "+ funcionario.getSalarioBruto() +
+                                        "\n Salario Liquido "+ funcionario.getSalarioLiquido() +
+                                        "\n Departamento: "+ funcionario.getNomeDepartamento());
                                 System.out.println("\nOperação bem-sucedida\n");
                                 Thread.sleep(1000);
                             } else {
@@ -161,10 +168,14 @@ public class AtualizarRegistro {
                             mostraObjeto(1);
                             System.out.println("Digite ID do funcionário: ");
                             num = sc.nextInt();
-                            departamento.setChefeDepartamento(funcionarioController.pesquisaFuncionarioID(num));
+                            departamento.setNomeChefe(funcionarioController.pesquisaFuncionarioID(num).getNome());
                             break;
                         case 0:
                             if(departamentoController.atualizaDepartamento(departamento)) {
+                                System.out.println("Departamento: " +
+                                        "\n Nome: "+ departamento.getNomeDepartamento() +
+                                        "\n Sigla: "+ departamento.getSigla() +
+                                        "\n Chefe: "+ departamento.getNomeChefe());
                                 System.out.println("\nOperação bem-sucedida\n");
                                 Thread.sleep(1000);
                             } else {
@@ -202,9 +213,10 @@ public class AtualizarRegistro {
                             "\nCPF: " + funcionario.getCpf() + "\nEMAIL: "+ funcionario.getEmail()+"\nSalario Bruto: " + funcionario.getSalarioBruto() +
                             "\nSalario Liquido: " + funcionario.getSalarioLiquido());
                     String nomeDepartamento;
-                    if(funcionario.getDepartamento() != null) {
-                        nomeDepartamento = funcionario.getDepartamento().getSigla();
-                        nomeDepartamento += "\nID Departamento: "+funcionario.getDepartamento().getIdDepartamento();
+                    if(!funcionario.getNomeDepartamento().isEmpty()) {
+                        Departamento departamento = departamentoController.buscarDepartamentoPorNome(funcionario.getNomeDepartamento());
+                        nomeDepartamento = departamento.getNomeDepartamento();
+                        nomeDepartamento += "\nID Departamento: "+departamento.getIdDepartamento();
                     } else {
                         nomeDepartamento = "Sem departamento";
                     }
@@ -219,8 +231,8 @@ public class AtualizarRegistro {
                     System.out.println("ID: " + departamento.getIdDepartamento() + "\nNome: " + departamento.getNomeDepartamento() +
                             "\nSigla: " + departamento.getSigla());
                     String nomeChefe;
-                    if(departamento.getChefeDepartamento() != null) {
-                        nomeChefe = departamento.getChefeDepartamento().getNome();
+                    if(!departamento.getNomeChefe().isEmpty()) {
+                        nomeChefe = departamento.getNomeChefe();
                     } else {
                         nomeChefe = "Sem chefe";
                     }
