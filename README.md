@@ -13,9 +13,9 @@
 * [Contato](#pushpin-contatos)
 
 ## :pushpin: Descrição do Projeto:
-Esse sistema foi desenvolvido como parte da disciplina de Banco de Dados 2023/2 ministrada pelo Professor Howard Rotti. Ele consiste em um conjunto de tabelas projetadas para a gestão de informações relacionadas aos funcionários, sendo as principais tabelas deste projeto: "funcionarios" e "departamentos".
+Esse sistema foi desenvolvido como parte da disciplina de Banco de Dados 2023/2 ministrada pelo Professor Howard Rotti. Ele consiste em um conjunto de coleções projetadas para a gestão de informações relacionadas aos funcionários, sendo as principais deste projeto: "funcionarios" e "departamentos".
 
-Quando a aplicação é executada, o sistema automaticamente gera todas as tabelas e estabelece os relacionamentos necessários.
+Todas as coleções estão previamente cadastradas no banco.
 <br>
 
 ## :pushpin: Desenvolvedores:
@@ -27,8 +27,8 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 
 
 ## ✔️ Tecnologias Utilizadas
-| ![Java](https://github.com/Detemann/employee_manegement/assets/105672201/b6497e63-3185-4d1a-9add-265914adefe4)<br><sub>Java</sub> |  ![SQL](https://github.com/Detemann/employee_manegement/assets/105672201/4674d324-f393-4b73-b196-884608a84049)<br><sub>SQL</sub> | <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/48/intellij-icon.png" width="48" height="48"><br><sub>IntelliJ IDEA</sub> | ![Oracle Database](https://github.com/Detemann/employee_manegement/assets/105672201/bbd69044-52d4-4d8c-b756-841317d5f20c)<br><sub>Oracle Database</sub> | ![Oracle Database](https://github.com/Detemann/employee_manegement/assets/105672201/1a0f0f85-017e-4ca8-8088-9d0a7f53fe40)<br><sub>Orientação a Objetos</sub> |
-| :-----: | :-----: | :-----: | :-----: | :-----: |
+| ![Java](assets/java_64.png)<br><sub>Java</sub> | ![IntelliJ IDEA](assets/intellij_64.png)<br><sub>IntelliJ IDEA</sub> | ![MongoDB](assets/mongodb_64.png)<br><sub>MongoDB</sub> | ![Orientacao a Objeto](assets/cod_64.png)<br><sub>Orientação a Objetos</sub> |
+| :-----: | :-----: | :-----: | :-----: |
 
 
 <br>
@@ -37,32 +37,20 @@ Quando a aplicação é executada, o sistema automaticamente gera todas as tabel
 
 ## :pushpin: Organização do Projeto:
 - [Diagrams](DiagramaRelacional): Nesse diretório está o [diagrama relacional](DiagramaRelacional/DiagramaRelacional.pdf) (lógico) do sistema.
-- [sql](com/src/main/resources/sql): Nesse diretório estão os scripts para criação das tabelas e inserção de dados fictícios para testes do sistema.
-  * Certifique-se de que o usuário do banco possui todos os privilégios antes de executar os scripts de criação, caso ocorra erro, execute o comando a seguir com o superusuário via SQL Developer: `GRANT ALL PRIVILEGES TO LABDATABASE;`
-  * [CreateTables.sql](com/src/main/resources/sql/CreateTables.sql): script responsável pela criação das tabelas.
-  * [AlterTabela.sql](com/src/main/resources/sql/AlterTable.sql): script responsável pela criação dos relacionamentos.
-  * [InsertData.sql](com/src/main/resources/sql/InsertData.sql): script responsável pela inserção dos registros fictícios para testes do sistema.
+  * O sistema possui duas entidades: FUNCIONARIO E DEPARTAMENTO
+
 - [main](com/src/main/java/sarrussys/main): Nesse diretório estão os scripts do sistema:
-  * [Conexão](com/src/main/java/sarrussys/main/database/ConexaoOracle.java): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoOracle.java) de conexão com o banco de dados Oracle.
+  * [Conexão](com/src/main/java/sarrussys/main/database/): Nesse repositório encontra-se o [módulo](com/src/main/java/sarrussys/main/database/ConexaoMongoDB.java) de conexão com o banco de dados MongoDB.
     - Exemplo de utilização para consultas simples:<br>
       ```Java
-       public List<String> relatorioDepartamentoChefe(){
-        List<String> resultado = new ArrayList<>();
-        try {
-            ResultSet consulta = this.databaseServices.fazerConsulta("SELECT DEPARTAMENTO.NOME AS Nome_Departamento, FUNCIONARIO.NOME AS Nome_Chefe\n" +
-                    "FROM DEPARTAMENTO\n" +
-                    "LEFT JOIN FUNCIONARIO ON DEPARTAMENTO.ID_CHEFE = FUNCIONARIO.ID_FUNCIONARIO");
-            while(consulta.next()) {
-                resultado.add(consulta.getString("NOME_DEPARTAMENTO"));
-                resultado.add(consulta.getString("NOME_CHEFE"));
-            }
-            if(!resultado.isEmpty()){
-                return resultado;
-            }else{
-                return null;
-            }
-        }catch (SQLException e) {
-            System.out.println("[RelatorioService] Ocorreu um erro inesperado: /n"+e.getMessage());
+      public Funcionario buscarFuncionarioPorId(int id) {
+        try (MongoCursor<Document> funcionarios = database.getMongoDatabase().getDatabase("employees")
+                .getCollection("employee")
+                .find(eq("_id", id)).cursor()) {
+      
+            return (Funcionario) utils.populate(funcionarios, utils.fabricate(1, Funcionario.class)).get(0);
+        } catch (Exception e) {
+            System.out.println("[DepartamentoRepository] "+e.getMessage());
             return null;
         }
       }
@@ -95,7 +83,7 @@ O Sistema de Controle de Funcionários é uma aplicação para gerenciar informa
 
 ### Passo 1: Download do Arquivo .JAR
 
-- Faça o download do arquivo .JAR clicando [aqui](https://github.com/Detemann/employee_manegement/releases/download/Release/SistemaControleFuncionarios.jar).
+- Faça o download do arquivo .JAR clicando [aqui](https://github.com/Detemann/employee_mgt_mongodb/releases/download/release/SistemaGerenciamento.jar).
 - Certifique-se de que o arquivo seja baixado na pasta de downloads ou em um local de fácil acesso.
 
 ### Passo 2: Instale o Java
