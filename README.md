@@ -97,7 +97,7 @@ O Sistema de Controle de Funcionários é uma aplicação para gerenciar informa
 - Navegue até a pasta onde o arquivo .JAR foi baixado. Você pode fazer isso usando o comando "cd" para mudar o diretório.
 - Execute o seguinte comando para iniciar a aplicação:
    ```shell
-   ~$ java -jar SistemaControleFuncionarios.jar
+   ~$ java -jar SistemaGerenciamento.jar
    ```
  
  Isso iniciará a aplicação de controle de funcionários. Siga as instruções na interface da aplicação para começar a gerenciar as informações dos funcionários.
