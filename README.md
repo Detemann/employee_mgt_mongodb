@@ -64,6 +64,7 @@ Todas as coleções estão previamente cadastradas no banco.
 ## :pushpin: Demonstração da Aplicação
 
 Assista a demonstrações em vídeo da aplicação para entender seu funcionamento. Clique nos links abaixo para acessar os vídeos:
+(!AVISO! Não foi necessário a gravação de um novo vídeo porque o funcionamento é o mesmo!)
 
 - [![Video_Demonstracao: Video](https://img.shields.io/badge/-Video_Completo-red?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/watch?v=JYDa-CZDsbU&ab_channel=Wandersontr)
 
